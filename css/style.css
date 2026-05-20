@@ -6,32 +6,40 @@
 
 /* ── 色彩與版面變數 ─────────────────────────────── */
 :root {
+  /* ── 海藍調色盤（v3.0）
+     Yale Blue    #1b4965  深海主色（取代墨黑）
+     Pacific Blue #62b6cb  中調藍
+     Fresh Sky    #5fa8d3  偏淺藍
+     Pale Sky     #cae9ff  接近白的淺藍（亮點、背景）
+     Frozen Water #bee9e8  極淡藍綠（最淺層）
+  ── */
+
   /* 基礎色 */
-  --ink:            #1c1510;
-  --paper:          #f0e6cc;
-  --paper-dark:     #d8cdb0;
+  --ink:            #1b4965;   /* Yale Blue */
+  --paper:          #f0f7ff;   /* 帶藍調的極淡白 */
+  --paper-dark:     #cae9ff;   /* Pale Sky */
 
   /* 山海色 */
-  --sky-high:       #9db8c4;
-  --sky-low:        #d4c8a8;
-  --mountain-far:   #4a6e30;
-  --mountain-near:  #2d4a1a;
-  --mountain-shade: #1a2e10;
-  --sea-deep:       #0d2535;
-  --sea-mid:        #1a4055;
-  --sea-surface:    #2a5c72;
-  --dock-color:     #2a1f14;
+  --sky-high:       #1b4965;   /* Yale Blue — 深藍天空頂部 */
+  --sky-low:        #cae9ff;   /* Pale Sky — 接近海平線 */
+  --mountain-far:   #5fa8d3;   /* Fresh Sky — 遠山輪廓 */
+  --mountain-near:  #1b4965;   /* Yale Blue — 近山深色 */
+  --mountain-shade: #0f2e40;   /* Yale Blue 加深 — 山腳陰影 */
+  --sea-deep:       #1b4965;   /* Yale Blue — 深水 */
+  --sea-mid:        #5fa8d3;   /* Fresh Sky — 中層海面 */
+  --sea-surface:    #62b6cb;   /* Pacific Blue — 近岸海面 */
+  --dock-color:     #0f2e40;   /* Yale Blue 加深 — 碼頭 */
 
-  /* 強調色 */
+  /* 強調色（保留金色）*/
   --gold:           #c4922a;
   --gold-light:     #e8c870;
   --gold-glow:      rgba(232, 200, 112, 0.28);
 
-  /* 船隻色 */
-  --vessel-longline:  #1a3d5c;
-  --vessel-trawl:     #1a3d22;
-  --vessel-harpoon:   #4a2810;
-  --vessel-whale:     #0d3040;
+  /* 船隻色（藍調重新對應）*/
+  --vessel-longline:  #1b4965;   /* Yale Blue */
+  --vessel-trawl:     #2e6e8e;   /* 中間藍 */
+  --vessel-harpoon:   #3a7fa0;   /* 偏亮藍 */
+  --vessel-whale:     #62b6cb;   /* Pacific Blue */
 
   /* 版面 */
   --max-width:      1200px;
@@ -55,13 +63,6 @@ body {
   color: var(--ink);
   font-family: 'Noto Serif TC', 'Songti SC', '宋體', Georgia, serif;
   line-height: 1.8;
-  background-image: repeating-linear-gradient(
-    0deg,
-    transparent 0px,
-    transparent 3px,
-    rgba(0, 0, 0, 0.018) 3px,
-    rgba(0, 0, 0, 0.018) 4px
-  );
 }
 
 /* ── 區塊容器 ────────────────────────────────────── */
@@ -89,7 +90,7 @@ body {
 
 .section-desc {
   font-size: 0.92rem;
-  color: #5a4a38;
+  color: #3a6a8a;
   letter-spacing: 0.05em;
 }
 

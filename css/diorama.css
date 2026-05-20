@@ -500,22 +500,24 @@
    ★ 刪除這個區塊可完全回到原本樣式
 ══════════════════════════════════════════════════ */
 
-/* 漁場 — 墨綠（山） */
-#strip-fishingGrounds .diorama-strip-header { background: var(--mountain-near); }
-#strip-fishingGrounds .diorama-strip-card-rule { background: var(--mountain-far); }
-#strip-fishingGrounds .diorama-strip-card-quote { border-left-color: var(--mountain-far); background: rgba(45, 74, 26, 0.07); }
+/* 漁場 — Yale Blue（最深） */
+#strip-fishingGrounds .diorama-strip-header { background: #1b4965; }
+#strip-fishingGrounds .diorama-strip-card-rule { background: #2e6e8e; }
+#strip-fishingGrounds .diorama-strip-card-quote { border-left-color: #2e6e8e; background: rgba(27, 73, 101, 0.07); }
 
-/* 魚種 — 海藍 */
-#strip-fish .diorama-strip-header { background: var(--sea-surface); }
-#strip-fish .diorama-strip-card-rule { background: var(--sea-surface); }
-#strip-fish .diorama-strip-card-quote { border-left-color: var(--sea-surface); background: rgba(42, 92, 114, 0.07); }
+/* 魚種 — Pacific Blue */
+#strip-fish .diorama-strip-header { background: #62b6cb; }
+#strip-fish .diorama-strip-card-rule { background: #62b6cb; }
+#strip-fish .diorama-strip-card-quote { border-left-color: #62b6cb; background: rgba(98, 182, 203, 0.10); }
 
-/* 洋流 — 深海藍 */
-#strip-currents .diorama-strip-header { background: var(--sea-mid); }
-#strip-currents .diorama-strip-card-rule { background: var(--sea-mid); }
-#strip-currents .diorama-strip-card-quote { border-left-color: var(--sea-mid); background: rgba(26, 64, 85, 0.08); }
+/* 洋流 — Fresh Sky */
+#strip-currents .diorama-strip-header { background: #5fa8d3; }
+#strip-currents .diorama-strip-card-rule { background: #5fa8d3; }
+#strip-currents .diorama-strip-card-quote { border-left-color: #5fa8d3; background: rgba(95, 168, 211, 0.10); }
 
-/* 漁法 — 暖棕（木） */
-#strip-techniques .diorama-strip-header { background: var(--dock-color); }
-#strip-techniques .diorama-strip-card-rule { background: var(--vessel-harpoon); }
-#strip-techniques .diorama-strip-card-quote { border-left-color: var(--vessel-harpoon); background: rgba(74, 40, 16, 0.07); }
+/* 漁法 — Frozen Water（最淺，標題文字改深色） */
+#strip-techniques .diorama-strip-header { background: #bee9e8; }
+#strip-techniques .diorama-strip-header .diorama-strip-label { color: #1b4965; }
+#strip-techniques .diorama-strip-header .diorama-strip-back-btn { color: #1b4965; border-color: rgba(27, 73, 101, 0.35); }
+#strip-techniques .diorama-strip-card-rule { background: #5fa8d3; }
+#strip-techniques .diorama-strip-card-quote { border-left-color: #5fa8d3; background: rgba(190, 233, 232, 0.18); }
