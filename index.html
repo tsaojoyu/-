@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>花蓮港漁業文化 — Demo v1</title>
+  <!-- 需要連線才能載入字型；離線時自動退回系統字型 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/harbor.css">
+  <link rel="stylesheet" href="css/diorama.css">
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════
+       BANNER 區塊（佔位）
+  ════════════════════════════════════════════ -->
+  <section class="section-placeholder">
+    <div class="placeholder-inner">
+      <div class="placeholder-tag">Banner</div>
+      <p>古今對照輪播 · 環境音</p>
+      <p class="placeholder-note">手繪漁場地圖 × 現代照片 GIF · 海浪音效</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       漁港區塊
+  ════════════════════════════════════════════ -->
+  <section class="harbor-section" id="harbor">
+
+    <div class="section-header">
+      <h2 class="section-title">漁港</h2>
+      <p class="section-desc">點擊插畫中的船隻，進入漁法故事</p>
+    </div>
+
+    <!-- 插畫場景 -->
+    <div class="harbor-scene" id="harborScene"
+         role="img" aria-label="花蓮港插畫示意圖（色塊佔位版）">
+
+      <!-- 背景圖層 -->
+      <div class="scene-sky"      aria-hidden="true"></div>
+      <div class="scene-mountain" aria-hidden="true"></div>
+      <div class="scene-sea"      aria-hidden="true"></div>
+      <div class="scene-dock"     aria-hidden="true"></div>
+
+      <!-- 場景標記 -->
+      <div class="scene-version-tag" aria-hidden="true">v1 demo · 色塊佔位圖</div>
+
+      <!-- 互動提示 -->
+      <div class="scene-hint" aria-hidden="true">▾ 點擊任一船隻深入了解</div>
+
+      <!-- ── 岸上標誌（先渲染，讓船隻疊在前面） ──── -->
+
+      <!-- 造船廠 -->
+      <div class="vessel-hotspot harbor-landmark harbor-landmark--shipyard"
+           data-vessel="shipyard" role="button" tabindex="0"
+           aria-label="造船廠，點擊了解更多">
+        <span class="harbor-landmark-label">造船廠</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+      <!-- 製冰冷凍廠 -->
+      <div class="vessel-hotspot harbor-landmark harbor-landmark--cold-storage"
+           data-vessel="coldStorage" role="button" tabindex="0"
+           aria-label="製冰冷凍廠，點擊了解更多">
+        <span class="harbor-landmark-label">製冰廠</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+      <!-- 漁會 -->
+      <div class="vessel-hotspot harbor-landmark harbor-landmark--union"
+           data-vessel="fishermanUnion" role="button" tabindex="0"
+           aria-label="漁會，點擊了解更多">
+        <span class="harbor-landmark-label">漁會</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+      <!-- 廣播電台（無線電） -->
+      <div class="vessel-hotspot harbor-landmark harbor-landmark--radio"
+           data-vessel="radio" role="button" tabindex="0"
+           aria-label="廣播電台，點擊了解更多">
+        <div class="harbor-radio-antenna" aria-hidden="true"></div>
+        <span class="harbor-landmark-label">無線電</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+      <!-- 台灣中油花蓮漁船站 -->
+      <div class="vessel-hotspot harbor-landmark harbor-landmark--oil"
+           data-vessel="oilStation" role="button" tabindex="0"
+           aria-label="中油漁船站，點擊了解更多">
+        <span class="harbor-landmark-label">中油站</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+      <!-- 燈塔 -->
+      <div class="vessel-hotspot harbor-landmark harbor-landmark--lighthouse"
+           data-vessel="lighthouse" role="button" tabindex="0"
+           aria-label="燈塔，點擊了解更多">
+        <div class="harbor-lighthouse-light" aria-hidden="true"></div>
+        <span class="harbor-landmark-label">燈塔</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+      <!-- ── 岸上行為 ──────────────────────────────── -->
+
+      <!-- 補網、整理漁具 -->
+      <div class="vessel-hotspot harbor-activity harbor-activity--net"
+           data-vessel="netRepair" role="button" tabindex="0"
+           aria-label="補網、整理漁具，點擊了解更多">
+        <span class="harbor-activity-label">補網・整理漁具</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+      <!-- 順天宮・廣場 -->
+      <div class="vessel-hotspot harbor-activity harbor-activity--temple"
+           data-vessel="temple" role="button" tabindex="0"
+           aria-label="順天宮・廣場，點擊了解更多">
+        <span class="harbor-activity-label">順天宮・廣場</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+      <!-- ── 船隻（後渲染，疊在建物前方） ─────────── -->
+
+      <!-- 出港漁船（鏢旗魚） -->
+      <div class="vessel-hotspot vessel-outbound"
+           data-vessel="outbound" role="button" tabindex="0"
+           aria-label="出港漁船，點擊了解鏢旗魚漁法">
+        <div class="vessel-body">
+          <div class="vessel-mast"></div>
+          <div class="vessel-harpoon-bar"></div>
+        </div>
+        <span class="vessel-label">出港・鏢旗魚</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+      <!-- 進港漁船（流刺網） -->
+      <div class="vessel-hotspot vessel-inbound"
+           data-vessel="inbound" role="button" tabindex="0"
+           aria-label="進港漁船，點擊了解流刺網漁法">
+        <div class="vessel-body">
+          <div class="vessel-mast"></div>
+          <div class="vessel-equipment vessel-equipment--net"></div>
+        </div>
+        <span class="vessel-label">進港・流刺網</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+      <!-- 賞鯨船 -->
+      <div class="vessel-hotspot vessel-whale"
+           data-vessel="whaleWatching" role="button" tabindex="0"
+           aria-label="賞鯨船，點擊了解生態旅遊轉型">
+        <div class="vessel-body">
+          <div class="vessel-mast vessel-mast--tall"></div>
+          <div class="vessel-equipment vessel-equipment--radar"></div>
+        </div>
+        <span class="vessel-label">賞鯨船</span>
+        <span class="vessel-tooltip">點擊了解更多</span>
+      </div>
+
+    </div><!-- /.harbor-scene -->
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       漁場箱庭 區塊
+  ════════════════════════════════════════════ -->
+  <section class="diorama-section" id="diorama">
+
+    <div class="section-header">
+      <h2 class="section-title">漁場箱庭</h2>
+      <p class="section-desc">點擊插畫中的元素，跳到對應介紹；或直接往下捲動</p>
+    </div>
+
+    <!-- 插畫場景 -->
+    <div class="diorama-scene" id="dioramaScene"
+         role="img" aria-label="花蓮漁場箱庭示意圖（色塊佔位版）">
+
+      <!-- 背景圖層 -->
+      <div class="diorama-sky"  aria-hidden="true"></div>
+      <div class="diorama-sea"  aria-hidden="true"></div>
+      <div class="diorama-land" aria-hidden="true"></div>
+
+      <!-- 場景標記 -->
+      <div class="scene-version-tag" aria-hidden="true">v1 demo · 色塊佔位圖</div>
+      <div class="scene-hint"        aria-hidden="true">▾ 點擊任一元素深入了解</div>
+
+      <!-- ── 漁場（陸地左側） ──────────────────── -->
+      <div class="diorama-hotspot diorama-hotspot--mountain"
+           data-category="fishingGrounds" data-index="0"
+           role="button" tabindex="0"
+           style="left:3%;top:30%;width:18%;height:10%"
+           aria-label="七星潭，跳到漁場介紹">
+        <span class="diorama-hotspot-label">七星潭</span>
+        <span class="diorama-hotspot-tooltip">跳到漁場介紹</span>
+      </div>
+
+      <div class="diorama-hotspot diorama-hotspot--mountain"
+           data-category="fishingGrounds" data-index="1"
+           role="button" tabindex="0"
+           style="left:4%;top:47%;width:18%;height:10%"
+           aria-label="清水斷崖，跳到漁場介紹">
+        <span class="diorama-hotspot-label">清水斷崖</span>
+        <span class="diorama-hotspot-tooltip">跳到漁場介紹</span>
+      </div>
+
+      <div class="diorama-hotspot diorama-hotspot--mountain"
+           data-category="fishingGrounds" data-index="2"
+           role="button" tabindex="0"
+           style="left:3%;top:64%;width:18%;height:10%"
+           aria-label="鏢尾，跳到漁場介紹">
+        <span class="diorama-hotspot-label">鏢尾</span>
+        <span class="diorama-hotspot-tooltip">跳到漁場介紹</span>
+      </div>
+
+      <!-- ── 洋流（近岸海面） ──────────────────── -->
+      <div class="diorama-hotspot diorama-hotspot--current"
+           data-category="currents" data-index="0"
+           role="button" tabindex="0"
+           style="left:28%;top:36%;width:17%;height:8%"
+           aria-label="沿岸流，跳到洋流介紹">
+        <span class="diorama-hotspot-label">沿岸流 →</span>
+        <span class="diorama-hotspot-tooltip">跳到洋流介紹</span>
+      </div>
+
+      <div class="diorama-hotspot diorama-hotspot--current"
+           data-category="currents" data-index="1"
+           role="button" tabindex="0"
+           style="left:42%;top:52%;width:17%;height:8%"
+           aria-label="南流，跳到洋流介紹">
+        <span class="diorama-hotspot-label">南流 ↓</span>
+        <span class="diorama-hotspot-tooltip">跳到洋流介紹</span>
+      </div>
+
+      <div class="diorama-hotspot diorama-hotspot--current"
+           data-category="currents" data-index="2"
+           role="button" tabindex="0"
+           style="left:57%;top:36%;width:17%;height:8%"
+           aria-label="紅流，跳到洋流介紹">
+        <span class="diorama-hotspot-label">紅流 ↗</span>
+        <span class="diorama-hotspot-tooltip">跳到洋流介紹</span>
+      </div>
+
+      <!-- ── 魚種（開放海域） ──────────────────── -->
+      <div class="diorama-hotspot diorama-hotspot--fish"
+           data-category="fish" data-index="0"
+           role="button" tabindex="0"
+           style="left:68%;top:28%;width:14%;height:9%"
+           aria-label="旗魚，跳到魚種介紹">
+        <span class="diorama-hotspot-label">旗魚</span>
+        <span class="diorama-hotspot-tooltip">跳到魚種介紹</span>
+      </div>
+
+      <div class="diorama-hotspot diorama-hotspot--fish"
+           data-category="fish" data-index="1"
+           role="button" tabindex="0"
+           style="left:75%;top:50%;width:14%;height:9%"
+           aria-label="曼波魚，跳到魚種介紹">
+        <span class="diorama-hotspot-label">曼波魚</span>
+        <span class="diorama-hotspot-tooltip">跳到魚種介紹</span>
+      </div>
+
+      <div class="diorama-hotspot diorama-hotspot--fish"
+           data-category="fish" data-index="2"
+           role="button" tabindex="0"
+           style="left:62%;top:66%;width:14%;height:9%"
+           aria-label="煙仔虎，跳到魚種介紹">
+        <span class="diorama-hotspot-label">煙仔虎</span>
+        <span class="diorama-hotspot-tooltip">跳到魚種介紹</span>
+      </div>
+
+      <!-- ── 漁法（近岸水域） ──────────────────── -->
+      <div class="diorama-hotspot diorama-hotspot--vessel"
+           data-category="techniques" data-index="0"
+           role="button" tabindex="0"
+           style="left:30%;top:74%;width:9%;height:17%"
+           aria-label="漁法記憶一，跳到漁法介紹">
+        <div class="diorama-vessel-mast"></div>
+        <span class="diorama-hotspot-label">漁法一</span>
+        <span class="diorama-hotspot-tooltip">跳到漁法介紹</span>
+      </div>
+
+      <div class="diorama-hotspot diorama-hotspot--vessel"
+           data-category="techniques" data-index="1"
+           role="button" tabindex="0"
+           style="left:42%;top:72%;width:9%;height:17%"
+           aria-label="漁法記憶二，跳到漁法介紹">
+        <div class="diorama-vessel-mast"></div>
+        <span class="diorama-hotspot-label">漁法二</span>
+        <span class="diorama-hotspot-tooltip">跳到漁法介紹</span>
+      </div>
+
+      <div class="diorama-hotspot diorama-hotspot--vessel"
+           data-category="techniques" data-index="2"
+           role="button" tabindex="0"
+           style="left:54%;top:74%;width:9%;height:17%"
+           aria-label="漁法記憶三，跳到漁法介紹">
+        <div class="diorama-vessel-mast"></div>
+        <span class="diorama-hotspot-label">漁法三</span>
+        <span class="diorama-hotspot-tooltip">跳到漁法介紹</span>
+      </div>
+
+    </div><!-- /.diorama-scene -->
+
+    <!-- 四大橫條（由 JS 從 DIORAMA_DATA 渲染） -->
+    <div id="dioramaStrips"></div>
+
+    <!-- 延伸閱讀（由 JS 從 DIORAMA_LINKS 渲染） -->
+    <div class="diorama-deep-links" id="dioramaDeepLinks"></div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       Lightbox 遮罩
+  ════════════════════════════════════════════ -->
+  <div class="lightbox-overlay" id="lightboxOverlay"
+       role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+    <div class="lightbox-content" id="lightboxContent">
+
+      <button class="lightbox-close" id="lightboxClose" aria-label="關閉">✕</button>
+
+      <div class="lightbox-inner">
+        <div  class="lightbox-vessel-badge"  id="lightboxBadge"></div>
+        <h2   class="lightbox-title"         id="lightboxTitle"></h2>
+        <p    class="lightbox-subtitle"      id="lightboxSubtitle"></p>
+        <div  class="lightbox-rule"></div>
+
+        <!-- 媒體區：影片優先，其次圖片輪播 -->
+        <div class="lightbox-media" id="lightboxMedia" style="display:none">
+
+          <div class="lightbox-video-wrap" id="lightboxVideoWrap" style="display:none">
+            <video id="lightboxVideo" controls preload="metadata" playsinline></video>
+            <p class="video-error-msg" id="videoErrorMsg">
+              此影片格式無法在瀏覽器中播放，建議將影片轉換為 .mp4 格式。
+            </p>
+          </div>
+
+          <div class="lightbox-gallery" id="lightboxGallery" style="display:none">
+            <div class="gallery-stage">
+              <button class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="上一張">←</button>
+              <img class="gallery-img" id="galleryImg" src="" alt="漁法照片">
+              <button class="gallery-arrow gallery-next" id="galleryNext" aria-label="下一張">→</button>
+            </div>
+            <div class="gallery-counter" id="galleryCounter"></div>
+          </div>
+
+        </div>
+
+        <div class="lightbox-section">
+          <h3 class="lightbox-section-label">漁法介紹</h3>
+          <p  class="lightbox-description" id="lightboxDescription"></p>
+        </div>
+
+        <div class="lightbox-section">
+          <h3         class="lightbox-section-label">訪談節錄</h3>
+          <blockquote class="lightbox-quote" id="lightboxQuote"></blockquote>
+          <cite       class="lightbox-cite"  id="lightboxCite"></cite>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="data/vessels.js"></script>
+  <script src="js/harbor.js"></script>
+  <script src="data/diorama.js"></script>
+  <script src="js/diorama.js"></script>
+</body>
+</html>
