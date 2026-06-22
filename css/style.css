@@ -177,6 +177,17 @@ body {
   );
 }
 
+/* 頂部光暈 */
+.banner-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, var(--paper) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* 底部光暈，與漁港場景銜接 */
 .banner-section::after {
   content: '';
