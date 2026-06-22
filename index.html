@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/harbor.css">
   <link rel="stylesheet" href="css/diorama.css">
+  <link rel="stylesheet" href="css/compare.css">
 </head>
 <body>
 
@@ -398,10 +399,56 @@
     <!-- 四大橫條（由 JS 從 DIORAMA_DATA 渲染） -->
     <div id="dioramaStrips"></div>
 
-    <!-- 延伸閱讀（由 JS 從 DIORAMA_LINKS 渲染） -->
-    <div class="diorama-deep-links" id="dioramaDeepLinks"></div>
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       漁場地圖今昔比對
+  ════════════════════════════════════════════ -->
+  <section class="compare-section" id="map-compare">
+
+    <div class="section-header">
+      <h2 class="section-title">漁場地圖今昔比對</h2>
+      <p class="section-desc">拖動中央滑桿，對照手繪地圖與現代衛星影像</p>
+    </div>
+
+    <div class="compare-wrap">
+      <!-- 標籤 -->
+      <span class="compare-label compare-label--left">手繪地圖</span>
+      <span class="compare-label compare-label--right">現代照片</span>
+
+      <!-- 比對容器 -->
+      <div class="compare-container" id="compareContainer">
+        <!-- 底層：舊地圖（全寬） -->
+        <img class="compare-img compare-img--old"
+             src="https://picsum.photos/seed/map-old/1200/600"
+             alt="舊手繪漁場地圖">
+        <!-- 上層：現代照片（clip-path 控制顯示範圍） -->
+        <img class="compare-img compare-img--new"
+             src="https://picsum.photos/seed/map-new/1200/600"
+             alt="現代漁場照片">
+        <!-- 滑桿把手 -->
+        <div class="compare-handle" id="compareHandle" role="slider"
+             aria-label="比對滑桿" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
+             tabindex="0">
+          <div class="compare-handle-line"></div>
+          <div class="compare-handle-thumb">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M6 10l-4 0M6 10l-3-3M6 10l-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M14 10l4 0M14 10l3-3M14 10l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </section>
+
+  <!-- ════════════════════════════════════════════
+       延伸閱讀
+  ════════════════════════════════════════════ -->
+  <div class="harbor-section">
+    <div class="diorama-deep-links" id="dioramaDeepLinks"></div>
+  </div>
 
   <!-- ════════════════════════════════════════════
        Lightbox 遮罩
@@ -459,5 +506,6 @@
   <script src="data/diorama.js"></script>
   <script src="js/diorama.js"></script>
   <script src="js/banner.js"></script>
+  <script src="js/compare.js"></script>
 </body>
 </html>

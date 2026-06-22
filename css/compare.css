@@ -1,0 +1,112 @@
+/* ═══════════════════════════════════════════════════
+   compare.css — 漁場地圖今昔比對滑桿
+   花蓮港漁業文化網站
+   v1.0 | 2026-06-22
+═══════════════════════════════════════════════════ */
+
+.compare-section {
+  max-width: var(--max-width);
+  margin: var(--section-gap) auto;
+  padding: 0 2rem;
+}
+
+.compare-wrap {
+  position: relative;
+}
+
+/* 左右標籤 */
+.compare-label {
+  position: absolute;
+  top: 1rem;
+  z-index: 10;
+  background: rgba(10, 30, 46, 0.72);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 0.3rem 0.8rem;
+  pointer-events: none;
+}
+
+.compare-label--left  { left:  1rem; }
+.compare-label--right { right: 1rem; }
+
+/* 比對容器 */
+.compare-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+  cursor: ew-resize;
+  user-select: none;
+  background: var(--ink);
+}
+
+/* 兩張圖都佔滿容器 */
+.compare-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  pointer-events: none;
+}
+
+/* 上層新照片，clip-path 由 JS 控制 */
+.compare-img--new {
+  clip-path: inset(0 50% 0 0);
+  transition: clip-path 0s;  /* JS 拖曳時不要緩動 */
+}
+
+/* 滑桿把手 */
+.compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20;
+}
+
+.compare-handle-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: #fff;
+  pointer-events: none;
+}
+
+.compare-handle-thumb {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.compare-handle:hover .compare-handle-thumb,
+.compare-handle:focus .compare-handle-thumb {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.compare-handle:focus {
+  outline: none;
+}
