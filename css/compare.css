@@ -57,7 +57,22 @@
 /* 上層新照片，clip-path 由 JS 控制 */
 .compare-img--new {
   clip-path: inset(0 50% 0 0);
-  transition: clip-path 0s;  /* JS 拖曳時不要緩動 */
+  transition: clip-path 0s;
+}
+
+/* 新照片佔位 */
+.compare-img--placeholder {
+  background: #0f2e40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compare-img--placeholder span {
+  color: rgba(202, 233, 255, 0.45);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  pointer-events: none;
 }
 
 /* 滑桿把手 */

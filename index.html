@@ -418,14 +418,14 @@
 
       <!-- 比對容器 -->
       <div class="compare-container" id="compareContainer">
-        <!-- 底層：舊地圖（全寬） -->
+        <!-- 底層：舊手繪地圖 -->
         <img class="compare-img compare-img--old"
-             src="https://picsum.photos/seed/map-old/1200/600"
+             src="images/compare-old-1.jpg"
              alt="舊手繪漁場地圖">
-        <!-- 上層：現代照片（clip-path 控制顯示範圍） -->
-        <img class="compare-img compare-img--new"
-             src="https://picsum.photos/seed/map-new/1200/600"
-             alt="現代漁場照片">
+        <!-- 上層：現代照片（clip-path 控制顯示範圍；待換入正式照片） -->
+        <div class="compare-img compare-img--new compare-img--placeholder">
+          <span>現代照片待補</span>
+        </div>
         <!-- 滑桿把手 -->
         <div class="compare-handle" id="compareHandle" role="slider"
              aria-label="比對滑桿" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
