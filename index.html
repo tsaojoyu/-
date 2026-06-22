@@ -418,14 +418,12 @@
 
       <!-- 比對容器 -->
       <div class="compare-container" id="compareContainer">
-        <!-- 底層：舊手繪地圖 -->
-        <img class="compare-img compare-img--old"
+        <!-- 底層：現代照片（佔位） -->
+        <div class="compare-img compare-img--new compare-img--placeholder" id="compareNewEl"></div>
+        <!-- 上層：舊手繪地圖（clip-path 控制，向左拉則露出右側現代照片） -->
+        <img class="compare-img compare-img--old" id="compareOldImg"
              src="images/compare-old-1.jpg"
              alt="舊手繪漁場地圖">
-        <!-- 上層：現代照片（clip-path 控制顯示範圍；待換入正式照片） -->
-        <div class="compare-img compare-img--new compare-img--placeholder">
-          <span>現代照片待補</span>
-        </div>
         <!-- 滑桿把手 -->
         <div class="compare-handle" id="compareHandle" role="slider"
              aria-label="比對滑桿" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
@@ -439,6 +437,14 @@
           </div>
         </div>
       </div>
+
+      <!-- 組別導航 -->
+      <div class="compare-nav">
+        <button class="compare-arrow" id="comparePrev" aria-label="上一張">&#8592;</button>
+        <span class="compare-counter" id="compareCounter">1 / 5</span>
+        <button class="compare-arrow" id="compareNext" aria-label="下一張">&#8594;</button>
+      </div>
+
     </div>
 
   </section>

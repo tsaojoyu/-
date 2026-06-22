@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════
    compare.css — 漁場地圖今昔比對滑桿
    花蓮港漁業文化網站
-   v1.0 | 2026-06-22
+   v1.1 | 2026-06-22
 ═══════════════════════════════════════════════════ */
 
 .compare-section {
@@ -39,7 +39,7 @@
   overflow: hidden;
   cursor: ew-resize;
   user-select: none;
-  background: var(--ink);
+  background: #0f2e40;
 }
 
 /* 兩張圖都佔滿容器 */
@@ -49,30 +49,33 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: top;
   display: block;
   pointer-events: none;
 }
 
-/* 上層新照片，clip-path 由 JS 控制 */
+/* 底層：現代照片佔位 */
 .compare-img--new {
+  background: #0f2e40;
+}
+
+.compare-img--placeholder::after {
+  content: '現代照片待補';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(202, 233, 255, 0.4);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* 上層：舊手繪地圖，clip-path 由 JS 控制（初始顯示左半邊） */
+.compare-img--old {
   clip-path: inset(0 50% 0 0);
   transition: clip-path 0s;
-}
-
-/* 新照片佔位 */
-.compare-img--placeholder {
-  background: #0f2e40;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.compare-img--placeholder span {
-  color: rgba(202, 233, 255, 0.45);
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  pointer-events: none;
 }
 
 /* 滑桿把手 */
@@ -124,4 +127,46 @@
 
 .compare-handle:focus {
   outline: none;
+}
+
+/* 導航箭頭 */
+.compare-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+}
+
+.compare-arrow {
+  background: none;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  font-size: 1.1rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.compare-arrow:hover {
+  background: var(--ink);
+  color: #fff;
+}
+
+.compare-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.compare-counter {
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  color: var(--ink);
+  min-width: 3rem;
+  text-align: center;
 }
