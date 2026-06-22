@@ -22,7 +22,7 @@ const DIORAMA_LINKS = [
   },
   {
     label: '《看山版，聽流水》',
-    url: '#',   // ← 填入報告連結（PDF 或網頁）
+    url: 'https://iiha-formosa.com/%E8%8A%B1%E8%93%AE%E6%BC%81%E6%9D%91%E6%95%85%E4%BA%8B/',
     note: '協會出版研究報告，深入了解花蓮傳統看山版定位知識'
   }
 ];
