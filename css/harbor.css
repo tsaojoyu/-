@@ -634,6 +634,7 @@
   font-size: 0.95rem;
   line-height: 2;
   color: #2a1f14;
+  white-space: pre-wrap;
 }
 
 /* 訪談引言 */

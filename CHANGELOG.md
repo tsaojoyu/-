@@ -223,3 +223,59 @@ css/diorama.css 全面改寫：翻頁模式、淡入樣式、nav 按鈕、橫條
 js/diorama.js   全面改寫：折疊邏輯、openStrip/closeStrip、景深＋拖曳恢復
 css/diorama.css 全面改寫：body 折疊樣式、header 可點擊、▶ 指示符旋轉
 ```
+
+---
+
+## v2.4 — 2026-06-22
+
+### 內容填入：正式資料全面替換佔位文字；插畫熱區擴充為全 20 個
+
+#### vessels.js — 港口段落（全 11 個元素）
+- 三艘船（出港/進港/賞鯨）、六個岸上標誌、兩個岸上行為，全部換入正式文字
+- 訪談引言獨立至 `quote` 欄位：鏢魚師傅職業病、流刺網漁民海豚故事、漁民三支冰
+- 廣播電台維持佔位文字（資料尚待補充）
+
+#### diorama.js — 海上段落（全 20 張卡片）
+所有類別完全以正式田野資料替換，舊佔位項目全數移除：
+
+| 類別 | 項目（5 張） |
+|------|------------|
+| 漁場 | 溝灣仔、鏢尾、紅目鰱逝、龜仔口、ma-kong-kháu（皆附臺語羅馬拼音）|
+| 魚種 | 立翅旗魚、大棘大眼鯛、赤鯥、康氏馬加鰆、鬼頭刀 |
+| 洋流 | 紅流、南流、洘流、流東、流巡（皆附臺語羅馬拼音；流東附漁民諺語）|
+| 漁法 | 延繩釣、流刺網、底刺網、拖網（待確認）、焚寄網 |
+
+#### index.html — 插畫熱區：12 個 → 20 個
+每類別由 3 個擴充為 5 個（全覆蓋）；位置採交錯排列避免標籤重疊
+
+#### diorama.css — 插畫場景高度：500px → 700px
+配合 20 個熱區提供足夠垂直空間
+
+#### harbor.css / diorama.css — 新增 `white-space: pre-wrap`
+讓多段落說明文字在 Lightbox 與卡片中正確換行顯示
+
+### 異動檔案
+```
+data/vessels.js   全面更新：11 個元素換入正式文字（廣播電台除外）
+data/diorama.js   全面重寫：20 張卡片換入正式研究資料
+index.html        插畫熱區 12 → 20 個，標籤與 data-index 全部更新
+css/diorama.css   場景高度 500px → 700px；新增 white-space: pre-wrap
+css/harbor.css    新增 white-space: pre-wrap
+```
+
+### 待辦（下一階段）
+- [ ] 廣播電台：補入正式文字（`data/vessels.js` radio.description）
+- [ ] 延伸閱讀 URL：填入 Google Maps 漁場地圖、《看山版，聽流水》報告連結（`data/diorama.js` DIORAMA_LINKS）
+- [x] 拖網資料確認 → 已更名為「叉手網」並換入正式說明（2026-06-22）
+- [ ] 照片素材就位後填入路徑（`data/vessels.js` 各元素 images 陣列）
+- [ ] 影片素材就位後填入路徑（`data/vessels.js` 各元素 video 欄位）
+- [ ] 正式插畫定稿後調整所有熱區位置（`index.html` 各熱區 style="" 數值；`css/harbor.css` 各元素 left/top/width/height）
+
+---
+
+## v2.4.1 — 2026-06-22
+
+### 漁法內容修正：拖網 → 叉手網
+
+- `data/diorama.js`：將漁法類別 index 3 由「拖網」更名為「叉手網」，換入正式說明文字（以魩仔、鰻苗為主，冬季旺季，兩側長竿張網作業方式）
+- `index.html`：對應插畫熱區標籤同步更新
