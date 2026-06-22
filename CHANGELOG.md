@@ -279,3 +279,31 @@ css/harbor.css    新增 white-space: pre-wrap
 
 - `data/diorama.js`：將漁法類別 index 3 由「拖網」更名為「叉手網」，換入正式說明文字（以魩仔、鰻苗為主，冬季旺季，兩側長竿張網作業方式）
 - `index.html`：對應插畫熱區標籤同步更新
+
+---
+
+## v2.5 — 2026-06-22
+
+### Banner 手繪地圖輪播
+
+#### 新增
+- `js/banner.js`：5 張手繪地圖 crossfade 輪播（每張停留 5 秒，淡入淡出各 1.5 秒）
+- `css/style.css`：`.banner-slideshow` / `.banner-slide` 樣式（opacity 疊在深海藍漸層上，透明度 0.28）
+- `index.html`：Banner 加入 5 張 `<img class="banner-slide">` 與 `banner.js` 引入
+- `images/map-1~5.jpg`：手繪漁場地圖圖片（高解析度 JPG）
+
+#### 內容調整
+- Banner 小標題移除「多羅滿蹲點 ×」，僅保留「花蓮港漁業文化」
+- 延伸閱讀補上《看山版，聽流水》連結（`data/diorama.js` DIORAMA_LINKS）
+
+#### 視覺微調
+- 移除 Banner 橫線水紋裝飾（`::before` repeating-gradient）
+- 地圖裁切方向：預設 `object-position: top`，map-1 / map-2 個別設定 `top right`
+
+### 待辦（下一階段）
+- [ ] 廣播電台：補入正式文字（`data/vessels.js` radio.description）
+- [ ] 延伸閱讀 URL：Google Maps 漁場地圖連結（`data/diorama.js` DIORAMA_LINKS[0].url）
+- [ ] 照片素材就位後填入路徑（`data/vessels.js` 各元素 images 陣列）
+- [ ] 影片素材就位後填入路徑（`data/vessels.js` 各元素 video 欄位）
+- [ ] 正式插畫定稿後調整所有熱區位置
+- [ ] 箱庭插畫物件（選項 B：20 張透明底 PNG + 1 張底圖）
