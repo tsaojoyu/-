@@ -306,4 +306,47 @@ css/harbor.css    新增 white-space: pre-wrap
 - [ ] 照片素材就位後填入路徑（`data/vessels.js` 各元素 images 陣列）
 - [ ] 影片素材就位後填入路徑（`data/vessels.js` 各元素 video 欄位）
 - [ ] 正式插畫定稿後調整所有熱區位置
-- [ ] 箱庭插畫物件（選項 B：20 張透明底 PNG + 1 張底圖）
+- [ ] 箱庭插畫物件（選項 B：20 張透明底 PNG + 1 張底圖，或改為整張交給插畫家）
+
+---
+
+## v2.6 — 2026-06-22
+
+### 漁場地圖今昔比對區段
+
+#### 新增
+- `css/compare.css`：比對滑桿樣式（左右標籤、把手、導航箭頭）
+- `js/compare.js`：比對滑桿互動邏輯，支援滑鼠、觸控、鍵盤；5 組箭頭切換
+- `index.html`：新增 `#map-compare` 區段，延伸閱讀從 `#diorama` 內移出為獨立區塊
+- `images/compare-old-1~5.jpg`：5 張手繪漁場地圖（已上傳）
+
+#### 互動設計
+- 左側：舊手繪地圖；右側：現代影像（現為深藍佔位，待換入船上拍攝照片）
+- 下方 ← 1/5 → 箭頭切換五組比對
+- `object-position: top` 防止地圖頂部被裁切
+
+#### 素材資料夾建立
+- `images/vessels/`：漁港 11 個元素的照片與影片
+- `images/diorama/`：箱庭插畫物件（待用）
+
+#### 素材命名規則確立
+| 用途 | 路徑 | 命名 |
+|------|------|------|
+| 漁港照片 | `images/vessels/` | `outbound-01.jpg`、`inbound-01.jpg`… |
+| 漁港影片 | `images/vessels/` | `outbound.mp4`… |
+| 漁港場景底圖 | `images/` | `harbor-bg.jpg`（整張拼貼，取代色塊佔位） |
+| 今昔比對舊地圖 | `images/` | `compare-old-1~5.jpg`（已就位） |
+| 今昔比對現代影像 | `images/` | `compare-new-1~5.jpg`（待補） |
+
+#### 決策紀錄
+- 漁港場景插畫：採整張拼貼圖（`harbor-bg.jpg`），由使用者自行組合後匯出
+- 箱庭插畫：委託插畫家，交付方式待確認（整張 or 個別物件）
+
+### 待辦（下一階段）
+- [ ] 廣播電台：補入正式文字（`data/vessels.js` radio.description）
+- [ ] 延伸閱讀 URL：Google Maps 漁場地圖連結（`data/diorama.js` DIORAMA_LINKS[0].url）
+- [ ] 漁港場景底圖：拼貼完成後放入 `images/harbor-bg.jpg`
+- [ ] 漁港照片素材：放入 `images/vessels/`，填入 `vessels.js` images 陣列
+- [ ] 漁港影片素材：放入 `images/vessels/`，填入 `vessels.js` video 欄位
+- [ ] 今昔比對現代影像：放入 `images/compare-new-1~5.jpg`，填入 `compare.js` pairs[].newSrc
+- [ ] 箱庭插畫：確認交付方式後整合進網頁，調整熱區位置
