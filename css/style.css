@@ -125,6 +125,31 @@ body {
 }
 
 /* ══════════════════════════════════════════════════
+   Banner 手繪地圖輪播
+══════════════════════════════════════════════════ */
+
+.banner-slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.banner-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.banner-slide.active {
+  opacity: 0.28;
+}
+
+/* ══════════════════════════════════════════════════
    Banner 區塊
    ★ 換底圖時在 .banner-section 加入：
      background-image: url('images/banner.jpg');
