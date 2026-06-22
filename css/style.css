@@ -187,18 +187,6 @@ body {
   pointer-events: none;
 }
 
-/* 細橫線水紋裝飾 */
-.banner-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    180deg,
-    transparent 0px, transparent 38px,
-    rgba(202, 233, 255, 0.04) 38px, rgba(202, 233, 255, 0.04) 40px
-  );
-  pointer-events: none;
-}
 
 .banner-content {
   position: relative;
