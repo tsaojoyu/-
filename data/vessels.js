@@ -57,8 +57,7 @@ const VESSELS_DATA = {
     quote: null,
     quoteSource: null,
     images: [
-      'https://picsum.photos/seed/whale-a/800/450',
-      'https://picsum.photos/seed/whale-b/800/450'
+      'images/vessels/whale-01.jpg'
     ],
     video: null
   },
@@ -129,7 +128,9 @@ const VESSELS_DATA = {
     description: '花蓮港的燈塔，原本是一座白色的燈塔，是當地很重要的地標之一。\n\n後來因為港口進行擴建，東邊的防波堤往外延長了約 1800 公尺，舊防波堤上的白色燈塔在 1980 年被移除。\n\n為了延續花蓮人對這座地標的記憶，新燈塔外型參考了原本的白燈塔設計，讓大家仍然能感受到熟悉的樣子。\n\n不過因應國際航海的規範，港口入口左側的燈塔必須使用紅色（常見規則是「左紅右綠」），所以重建後的燈塔變成紅色，也因此成為現在花蓮港新的代表地標。\n\n每天大大小小的船隻進出港口，都會經過這座紅色燈塔。它就像一個安靜的守護者，提醒船隻方向，也幫助他們安全進出港口，不會迷路或偏離航道。',
     quote: null,
     quoteSource: null,
-    images: [],
+    images: [
+      'images/vessels/lighthouse-01.jpg'
+    ],
     video: null
   },
 
@@ -144,7 +145,9 @@ const VESSELS_DATA = {
     description: '港邊最常看到的畫面之一，就是漁民在岸上補網、整理漁具。\n\n漁網在海裡使用時，常常會被魚拉扯、被礁石勾到，甚至長時間浸在海水裡也會變得破損或打結。所以漁船回港後，漁民不能直接休息，還要把漁網拿上岸仔細檢查。\n\n他們會把破掉的地方一一補好，把打結的地方解開，還要把整張網整理成可以再出海使用的狀態。這個工作很花時間，也很需要耐心。\n\n對漁民來說，補網和整理漁具，其實就像是在「準備下一次出海」。因為海上的工作很依賴工具，只要一個小地方沒修好，都可能影響整趟捕魚的安全和收穫。',
     quote: null,
     quoteSource: null,
-    images: [],
+    images: [
+      'images/vessels/netrepair-01.jpg'
+    ],
     video: null
   },
 
@@ -155,7 +158,9 @@ const VESSELS_DATA = {
     description: '花蓮港口的「順天宮」，主要供奉的神明是「媽祖」，另外也有王母娘娘、九天玄女、天官武財神等神明，是在地漁民很重要的信仰中心。\n\n海上的環境變化很大，有時候天氣突然變壞、風浪變強，甚至還會遇到看不見的危險。而媽祖就像是守護海上的「保護神」，保佑漁民出海平安、順利回家。\n\n對漁民來說，廟不只是拜拜的地方，也是一個很重要的「聚集空間」。大家拜完媽祖之後，常常會在廟前廣場坐下來休息、聊天、喝點小酒，彼此交換最近的漁獲狀況、海上的天氣變化，還有哪一區比較好下網、哪一帶魚比較多。\n\n這些看似日常的對話，其實也是漁民之間分享經驗、互相提醒的重要方式。',
     quote: null,
     quoteSource: null,
-    images: [],
+    images: [
+      'images/vessels/temple-01.jpg'
+    ],
     video: null
   }
 
