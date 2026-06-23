@@ -350,3 +350,48 @@ css/harbor.css    新增 white-space: pre-wrap
 - [ ] 漁港影片素材：放入 `images/vessels/`，填入 `vessels.js` video 欄位
 - [ ] 今昔比對現代影像：放入 `images/compare-new-1~5.jpg`，填入 `compare.js` pairs[].newSrc
 - [ ] 箱庭插畫：確認交付方式後整合進網頁，調整熱區位置
+
+---
+
+## v2.7 — 2026-06-23
+
+### 箱庭互動改版 + 漁法文字更新
+
+#### 箱庭熱區重構（20 個 → 8 個）
+- `index.html`：移除 20 個文字色塊熱區，改為每主題 2 個圖片熱區（`diorama-hotspot--img`）
+- 熱區不再對應個別卡片，改為對應整個類別橫條
+- 插畫未交付前顯示半透明虛線色塊佔位
+
+#### 點擊行為改版
+- `js/diorama.js`：點擊熱區展開整條橫條後，自動從第一張卡片捲動預覽至最後一張再回到起點（各 1 秒，中間停頓 0.3 秒），讓使用者看到共有 5 個項目
+- 移除原本只高亮第一張卡片的 `is-highlighted` 邏輯與 header pulse CSS
+
+#### 漁法文字更新（`data/diorama.js`）
+- **延繩釣**：簡化為單段，移除釣鉤型號細節
+- **流刺網**：措辭調整（「並在掙扎過程中與網纏繞」），移除 2021 年實名制段落
+- **底刺網**：移除單層網／三層網分類段落
+- **叉手網**：旺季後標點由句號改為逗號
+
+#### 箱庭插畫規格（給設計師）
+| 檔名 | 內容 | 尺寸 |
+|------|------|------|
+| `diorama/ground-1.png` | 漁場示意 1 | 600×800 px |
+| `diorama/ground-2.png` | 漁場示意 2 | 600×800 px |
+| `diorama/current-1.png` | 洋流示意 1 | 700×600 px |
+| `diorama/current-2.png` | 洋流示意 2 | 700×600 px |
+| `diorama/fish-1.png` | 魚種示意 1 | 800×400 px |
+| `diorama/fish-2.png` | 魚種示意 2 | 800×400 px |
+| `diorama/method-1.png` | 漁法示意 1 | 700×500 px |
+| `diorama/method-2.png` | 漁法示意 2 | 700×500 px |
+
+全部透明底 PNG，短邊不低於 400px。背景是否另繪待設計師確認。
+
+### 待辦（下一階段）
+- [ ] 廣播電台：補入正式文字（`data/vessels.js` radio.description）
+- [ ] 延伸閱讀 URL：Google Maps 漁場地圖連結（`data/diorama.js` DIORAMA_LINKS[0].url）
+- [ ] 漁港場景底圖：拼貼完成後放入 `images/harbor-bg.jpg`
+- [ ] 漁港照片素材：放入 `images/vessels/`，填入 `vessels.js` images 陣列
+- [ ] 漁港影片素材：放入 `images/vessels/`，填入 `vessels.js` video 欄位
+- [ ] 今昔比對現代影像：放入 `images/compare-new-1~5.jpg`，填入 `compare.js` pairs[].newSrc
+- [ ] 箱庭插畫：8 張物件（+ 可選底圖）交付後整合，調整熱區位置
+- [ ] Netlify 正式部署：v2.7 內容確認後擇機 push
