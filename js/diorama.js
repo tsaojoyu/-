@@ -357,18 +357,30 @@
       .forEach(updateDepth);
   });
 
-  /* ── 熱區點擊 → 展開橫條 + 捲到位置 ────────────── */
+  /* ── 熱區點擊 → 展開整條橫條 + 捲到位置 + pulse ── */
   document.querySelectorAll('.diorama-hotspot').forEach(function (hotspot) {
     hotspot.addEventListener('click', function () {
       var catKey = this.dataset.category;
-      var idx    = parseInt(this.dataset.index, 10);
       var strip  = document.getElementById('strip-' + catKey);
 
       if (strip) {
-        strip.scrollIntoView({ behavior: 'smooth', block: 'start' });
         if (typeof strip._openAndGoTo === 'function') {
-          strip._openAndGoTo(idx);
+          strip._openAndGoTo(0);
         }
+        setTimeout(function () {
+          strip.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+        setTimeout(function () {
+          var header = strip.querySelector('.diorama-strip-header');
+          if (header) {
+            header.classList.remove('is-pulsing');
+            void header.offsetWidth;
+            header.classList.add('is-pulsing');
+            header.addEventListener('animationend', function () {
+              header.classList.remove('is-pulsing');
+            }, { once: true });
+          }
+        }, 500);
       }
 
       document.querySelectorAll('.diorama-hotspot').forEach(function (el) {

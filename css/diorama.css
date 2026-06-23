@@ -109,21 +109,46 @@
   transform: translateY(-3px);
 }
 
-/* ── 各類型顏色 ─────────────────────────────────── */
+/* ── 圖片型熱區（正式插畫物件） ──────────────────── */
 
-.diorama-hotspot--mountain { background: var(--mountain-near); }
-.diorama-hotspot--fish     { background: var(--sea-surface); }
-.diorama-hotspot--current  { background: var(--sea-mid); }
-.diorama-hotspot--vessel   { background: var(--vessel-longline); }
+.diorama-hotspot--img {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
 
-.diorama-vessel-mast {
-  position: absolute;
-  top: -32%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 34%;
-  background: rgba(255, 255, 255, 0.5);
+.diorama-hotspot--img:hover,
+.diorama-hotspot--img:focus {
+  transform: translateY(-4px) scale(1.04);
+}
+
+.diorama-hotspot--img.is-active {
+  border: none;
+  box-shadow: none;
+  transform: translateY(-4px) scale(1.04);
+}
+
+.diorama-hotspot-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+  /* 插畫未交付前：顯示半透明色塊佔位 */
+  background: rgba(27, 73, 101, 0.25);
+  border: 2px dashed rgba(202, 233, 255, 0.4);
+}
+
+/* ── strip header pulse 動畫（點擊熱區後觸發）────── */
+
+@keyframes stripHeaderPulse {
+  0%   { filter: brightness(1.4); }
+  50%  { filter: brightness(1);   }
+  100% { filter: brightness(1.4); }
+}
+
+.diorama-strip-header.is-pulsing {
+  animation: stripHeaderPulse 0.5s ease 3;
 }
 
 .diorama-hotspot-label {
