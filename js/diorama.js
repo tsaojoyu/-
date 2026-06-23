@@ -334,19 +334,38 @@
 
     makeDraggable(track);
 
-    /* ── 供熱區點擊：展開 + 等動畫 + 卡片置中 + 高亮 */
-    strip._openAndGoTo = function (cardIdx) {
+    /* ── 供熱區點擊：展開 + 捲動預覽所有卡片 */
+    strip._openAndGoTo = function () {
       openStrip(strip, function () {
-        var cards = track.querySelectorAll('.diorama-strip-card');
-        var card  = cards[cardIdx];
-        if (!card) return;
-        track.scrollLeft =
-          card.offsetLeft - (track.offsetWidth / 2) + (card.offsetWidth / 2);
-        updateDepth(track);
-        card.classList.remove('is-highlighted');
-        void card.offsetWidth;
-        card.classList.add('is-highlighted');
-        setTimeout(function () { card.classList.remove('is-highlighted'); }, 1400);
+        var maxScroll = track.scrollWidth - track.clientWidth;
+        if (maxScroll <= 0) return;
+
+        var duration = 1000;
+
+        function easeInOut(t) {
+          return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+
+        function animateTo(from, to, onDone) {
+          var startTime = null;
+          function step(ts) {
+            if (!startTime) startTime = ts;
+            var t = Math.min((ts - startTime) / duration, 1);
+            track.scrollLeft = from + (to - from) * easeInOut(t);
+            updateDepth(track);
+            if (t < 1) requestAnimationFrame(step);
+            else if (onDone) onDone();
+          }
+          requestAnimationFrame(step);
+        }
+
+        /* 滑到最後一張，停 300ms，再滑回第一張 */
+        track.scrollLeft = 0;
+        animateTo(0, maxScroll, function () {
+          setTimeout(function () {
+            animateTo(maxScroll, 0, null);
+          }, 300);
+        });
       });
     };
   });
@@ -365,22 +384,11 @@
 
       if (strip) {
         if (typeof strip._openAndGoTo === 'function') {
-          strip._openAndGoTo(0);
+          strip._openAndGoTo();
         }
         setTimeout(function () {
           strip.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 50);
-        setTimeout(function () {
-          var header = strip.querySelector('.diorama-strip-header');
-          if (header) {
-            header.classList.remove('is-pulsing');
-            void header.offsetWidth;
-            header.classList.add('is-pulsing');
-            header.addEventListener('animationend', function () {
-              header.classList.remove('is-pulsing');
-            }, { once: true });
-          }
-        }, 500);
       }
 
       document.querySelectorAll('.diorama-hotspot').forEach(function (el) {
