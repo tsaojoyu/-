@@ -75,8 +75,7 @@ body {
 
 .harbor-section--full {
   max-width: none;
-  padding: 0;
-  margin-top: -3rem;
+  padding: 3rem 2rem 5rem;
   background: linear-gradient(
     180deg,
     var(--paper) 0%,
@@ -84,6 +83,11 @@ body {
     #9ecfcf 92%,
     var(--paper) 100%
   );
+}
+
+.harbor-section--full .section-header {
+  max-width: var(--max-width);
+  margin: 0 auto 1.5rem;
 }
 
 /* ── 區塊標題 ────────────────────────────────────── */
