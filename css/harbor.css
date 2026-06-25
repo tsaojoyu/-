@@ -10,16 +10,18 @@
 
 .harbor-scene {
   position: relative;
-  width: 100%;
+  max-width: 100%;
+  max-height: 92vh;
   aspect-ratio: 1680 / 1292;
-  overflow: hidden;
-  border-radius: 6px;
+  margin: 0 auto;
+  overflow: visible;
   cursor: default;
   user-select: none;
   background-image: url('../images/vessels/漁港bg.png');
   background-size: cover;
   background-position: center;
 }
+
 
 /* ══════════════════════════════════════════════════
    標點式熱區
@@ -56,18 +58,17 @@
   position: absolute;
   bottom: calc(100% + 8px);
   left: 50%;
-  transform: translateX(-50%) translateY(4px);
-  background: var(--ink);
+  transform: translateX(-50%);
+  background: rgba(27, 73, 101, 0.55);
   color: var(--paper);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  padding: 3px 10px;
+  padding: 2px 8px;
   white-space: nowrap;
-  opacity: 0;
   pointer-events: none;
-  transition: opacity 0.15s ease, transform 0.15s ease;
   z-index: 10;
+  transition: background 0.15s ease;
 }
 
 .harbor-marker-label::after {
@@ -76,14 +77,18 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border: 5px solid transparent;
-  border-top-color: var(--ink);
+  border: 4px solid transparent;
+  border-top-color: rgba(27, 73, 101, 0.55);
+  transition: border-top-color 0.15s ease;
 }
 
-.harbor-marker:hover .harbor-marker-label,
-.harbor-marker:focus .harbor-marker-label {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+.harbor-marker:hover .harbor-marker-label {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.harbor-marker:hover .harbor-marker-label::after {
+  border-top-color: var(--gold);
 }
 
 /* ══════════════════════════════════════════════════
