@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════════════
    harbor.css — 漁港區塊樣式
    花蓮港漁業文化網站 Demo
-   v1.0 | 2026-05-19
+   v2.0 | 2026-06-25
 ═══════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════════════
@@ -11,276 +11,57 @@
 .harbor-scene {
   position: relative;
   width: 100%;
-  height: 600px;
+  aspect-ratio: 1680 / 1292;
   overflow: hidden;
-  border: 3px solid var(--ink);
+  border-radius: 6px;
   cursor: default;
   user-select: none;
+  background-image: url('../images/vessels/漁港bg.png');
+  background-size: cover;
+  background-position: center;
 }
 
 /* ══════════════════════════════════════════════════
-   背景圖層（上 → 下：天空 → 山 → 海 → 碼頭）
-   ★ 換成真實插畫時：將這四個 div 替換為一張
-     background-image，其餘互動邏輯不需改動
+   標點式熱區
 ══════════════════════════════════════════════════ */
 
-/* 天空 */
-.scene-sky {
+.harbor-marker {
   position: absolute;
-  inset: 0;
-  height: 42%;
-  background: linear-gradient(180deg,
-    #1b4965 0%,
-    #3a7fa0 45%,
-    #bee9e8 100%
-  );
-}
-
-/* 山脈（以 ::before / ::after 做遠近兩層） */
-.scene-mountain {
-  position: absolute;
-  top: 12%;
-  left: 0;
-  right: 0;
-  height: 42%;
-  pointer-events: none;
-}
-
-/* 遠山（較淺、較高） */
-.scene-mountain::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--mountain-far);
-  clip-path: polygon(
-    0% 100%, 0% 65%,
-    6% 44%, 14% 62%,
-    22% 30%, 30% 58%,
-    38% 18%, 46% 52%,
-    54% 38%, 62% 60%,
-    70% 26%, 78% 50%,
-    86% 40%, 94% 58%,
-    100% 48%, 100% 100%
-  );
-  opacity: 0.7;
-}
-
-/* 近山（較深、較低，疊在遠山前） */
-.scene-mountain::after {
-  content: '';
-  position: absolute;
-  top: 20%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--mountain-near);
-  clip-path: polygon(
-    0% 100%, 0% 72%,
-    5% 50%, 12% 68%,
-    20% 28%, 28% 60%,
-    36% 14%, 44% 55%,
-    52% 40%, 60% 64%,
-    68% 24%, 76% 52%,
-    84% 36%, 92% 58%,
-    98% 44%, 100% 56%,
-    100% 100%
-  );
-  /* 山腳陰影 */
-  box-shadow: inset 0 -30px 40px var(--mountain-shade);
-}
-
-/* 海面 */
-.scene-sea {
-  position: absolute;
-  top: 40%;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(180deg, var(--sea-deep) 0%, var(--sea-mid) 100%);
-  /* 橫向水紋暗示 */
-  background-image:
-    linear-gradient(180deg, var(--sea-deep) 0%, var(--sea-mid) 100%),
-    repeating-linear-gradient(
-      180deg,
-      transparent 0px,
-      transparent 20px,
-      rgba(255, 255, 255, 0.035) 20px,
-      rgba(255, 255, 255, 0.035) 22px
-    );
-}
-
-/* 碼頭 */
-.scene-dock {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 20%;
-  background: var(--dock-color);
-  border-top: 3px solid var(--ink);
-  background-image: repeating-linear-gradient(
-    90deg,
-    transparent 0px,
-    transparent 58px,
-    rgba(255, 255, 255, 0.025) 58px,
-    rgba(255, 255, 255, 0.025) 60px
-  );
-}
-
-/* ── 場景標記與提示 ──────────────────────────────── */
-
-.scene-version-tag {
-  position: absolute;
-  top: 0.6rem;
-  right: 0.8rem;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.3);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.scene-hint {
-  position: absolute;
-  bottom: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 0.78rem;
-  letter-spacing: 0.12em;
-  white-space: nowrap;
-  pointer-events: none;
-  animation: hint-pulse 2.8s ease-in-out infinite;
-  z-index: 2;
-}
-
-@keyframes hint-pulse {
-  0%, 100% { opacity: 0.45; }
-  50%       { opacity: 0.9; }
-}
-
-/* ══════════════════════════════════════════════════
-   船隻熱區
-   ★ 換成真實插畫後：調整各 .vessel-* 的
-     left / top / width / height 即可對齊新插畫
-══════════════════════════════════════════════════ */
-
-.vessel-hotspot {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2.5px solid #fff;
   cursor: pointer;
   z-index: 5;
+  transform: translate(-50%, -50%);
   transition: transform 0.18s ease;
+  animation: marker-pulse 2.2s ease-in-out infinite;
 }
 
-.vessel-hotspot:hover,
-.vessel-hotspot:focus {
+.harbor-marker:hover,
+.harbor-marker:focus {
   outline: none;
-  transform: translateY(-5px);
+  transform: translate(-50%, -50%) scale(1.4);
+  animation: none;
+  box-shadow: 0 0 12px var(--gold-glow);
 }
 
-/* 船身色塊 */
-.vessel-body {
-  width: 100%;
-  flex: 1;
-  position: relative;
-  border: 2px solid var(--ink);
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+@keyframes marker-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 146, 42, 0.5); }
+  50%      { box-shadow: 0 0 0 8px rgba(196, 146, 42, 0); }
 }
 
-.vessel-hotspot:hover .vessel-body,
-.vessel-hotspot:focus .vessel-body {
-  border-color: var(--gold-light);
-  box-shadow: 0 0 18px var(--gold-glow);
-}
-
-/* 桅桿 */
-.vessel-mast {
+.harbor-marker-label {
   position: absolute;
-  top: -38%;
+  bottom: calc(100% + 8px);
   left: 50%;
-  transform: translateX(-50%);
-  width: 3px;
-  height: 42%;
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.vessel-mast--tall {
-  top: -55%;
-  height: 58%;
-}
-
-/* 各漁法裝備暗示 ── 延繩釣：橫向釣線 */
-.vessel-equipment--lines {
-  position: absolute;
-  bottom: 20%;
-  left: 8%;
-  right: 8%;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 7px 0 rgba(255, 255, 255, 0.25),
-              0 14px 0 rgba(255, 255, 255, 0.15);
-}
-
-/* 拖曳網：網具角落 */
-.vessel-equipment--net {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 28%;
-  height: 38%;
-  border-left: 2px solid rgba(255, 255, 255, 0.3);
-  border-top: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-/* 鏢魚：鏢台伸出 */
-.vessel-harpoon-bar {
-  position: absolute;
-  top: -6px;
-  left: -14px;
-  width: 16px;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.55);
-}
-
-/* 賞鯨：雷達圓圈 */
-.vessel-equipment--radar {
-  position: absolute;
-  top: 12%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.45);
-}
-
-/* 船名標籤 */
-.vessel-label {
-  display: block;
-  margin-top: 6px;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: var(--paper);
+  transform: translateX(-50%) translateY(4px);
   background: var(--ink);
-  padding: 2px 8px;
-  white-space: nowrap;
-}
-
-/* Tooltip（hover 才出現） */
-.vessel-tooltip {
-  position: absolute;
-  bottom: calc(100% + 32px);
-  left: 50%;
-  transform: translateX(-50%) translateY(5px);
-  background: var(--gold);
-  color: var(--ink);
-  font-size: 0.7rem;
+  color: var(--paper);
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   padding: 3px 10px;
   white-space: nowrap;
   opacity: 0;
@@ -289,184 +70,20 @@
   z-index: 10;
 }
 
-/* tooltip 箭頭 */
-.vessel-tooltip::after {
+.harbor-marker-label::after {
   content: '';
   position: absolute;
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
   border: 5px solid transparent;
-  border-top-color: var(--gold);
+  border-top-color: var(--ink);
 }
 
-.vessel-hotspot:hover .vessel-tooltip,
-.vessel-hotspot:focus .vessel-tooltip {
+.harbor-marker:hover .harbor-marker-label,
+.harbor-marker:focus .harbor-marker-label {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
-}
-
-/* ── 船隻定位與顏色 ──────────────────────────────── */
-/*   ★ 換插畫後調整這裡的 left/top/width/height     */
-
-/* 出港漁船（鏢旗魚）— 左側，船頭朝外海 */
-.vessel-outbound {
-  left: 6%;
-  top: 40%;
-  width: 14%;
-  height: 28%;
-  z-index: 6;
-}
-.vessel-outbound .vessel-body { background: var(--vessel-harpoon); }
-
-/* 進港漁船（流刺網）— 中段，帶著漁獲返港 */
-.vessel-inbound {
-  left: 44%;
-  top: 45%;
-  width: 14%;
-  height: 25%;
-  z-index: 6;
-}
-.vessel-inbound .vessel-body { background: #1a3d4a; }
-
-/* 賞鯨船 — 右側開放海域 */
-.vessel-whale {
-  left: 73%;
-  top: 42%;
-  width: 12%;
-  height: 22%;
-  z-index: 6;
-}
-.vessel-whale .vessel-body { background: var(--vessel-whale); }
-
-/* ══════════════════════════════════════════════════
-   岸上標誌（建築物色塊）
-══════════════════════════════════════════════════ */
-
-.harbor-landmark {
-  position: absolute;
-  cursor: pointer;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 4px;
-  border: 2px solid var(--ink);
-  overflow: visible;
-  transition: border-color 0.18s ease, box-shadow 0.18s ease;
-}
-
-.harbor-landmark:hover,
-.harbor-landmark:focus {
-  outline: none;
-  border-color: var(--gold-light);
-  box-shadow: 0 0 18px var(--gold-glow);
-}
-
-.harbor-landmark-label {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--paper);
-  background: rgba(28, 21, 16, 0.72);
-  padding: 1px 5px;
-  white-space: nowrap;
-  pointer-events: none;
-  position: relative;
-  z-index: 2;
-}
-
-/* 各標誌定位與顏色（由左至右） */
-
-.harbor-landmark--shipyard {
-  left: 1%;  top: 62%; width: 11%; height: 38%;
-  background: #2e2018;
-  background-image: repeating-linear-gradient(
-    90deg, transparent 0, transparent 14px,
-    rgba(255,255,255,0.04) 14px, rgba(255,255,255,0.04) 16px
-  );
-}
-
-.harbor-landmark--cold-storage {
-  left: 13%; top: 67%; width: 10%; height: 33%;
-  background: #1e303e;
-}
-
-.harbor-landmark--union {
-  left: 24%; top: 63%; width: 10%; height: 37%;
-  background: #2a1c10;
-  border-width: 3px;
-}
-
-.harbor-landmark--oil {
-  left: 57%; top: 73%; width: 9%;  height: 27%;
-  background: #1e1e28;
-}
-
-/* 燈塔：細長、延伸到海面，米白色 */
-.harbor-landmark--lighthouse {
-  left: 90%; top: 36%; width: 4%;  height: 64%;
-  background: var(--paper-dark);
-  border-radius: 2px 2px 0 0;
-}
-
-/* 燈塔頂部燈光 */
-.harbor-lighthouse-light {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 18px;
-  height: 12px;
-  background: var(--gold);
-  border: 2px solid var(--ink);
-  border-radius: 2px;
-  box-shadow: 0 0 14px var(--gold-glow), 0 0 6px var(--gold);
-  pointer-events: none;
-}
-
-/* ══════════════════════════════════════════════════
-   岸上行為（虛線區域）
-══════════════════════════════════════════════════ */
-
-.harbor-activity {
-  position: absolute;
-  cursor: pointer;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px dashed rgba(255, 255, 255, 0.4);
-  transition: border-color 0.18s ease, background 0.18s ease;
-}
-
-.harbor-activity:hover,
-.harbor-activity:focus {
-  outline: none;
-  border-color: var(--gold-light);
-  background: rgba(232, 200, 112, 0.08);
-}
-
-.harbor-activity-label {
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: rgba(255, 255, 255, 0.75);
-  text-align: center;
-  line-height: 1.5;
-  pointer-events: none;
-  padding: 2px 4px;
-}
-
-/* 補網・整理漁具 — 碼頭中段 */
-.harbor-activity--net {
-  left: 44%; top: 78%; width: 12%; height: 22%;
-}
-
-/* 順天宮・廣場 — 碼頭右段 */
-.harbor-activity--temple {
-  left: 68%; top: 72%; width: 12%; height: 28%;
 }
 
 /* ══════════════════════════════════════════════════

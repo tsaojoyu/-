@@ -57,117 +57,76 @@
 
     <!-- 插畫場景 -->
     <div class="harbor-scene" id="harborScene"
-         role="img" aria-label="花蓮港插畫示意圖（色塊佔位版）">
+         role="img" aria-label="花蓮港插畫">
 
-      <!-- 背景圖層 -->
-      <div class="scene-sky"      aria-hidden="true"></div>
-      <div class="scene-mountain" aria-hidden="true"></div>
-      <div class="scene-sea"      aria-hidden="true"></div>
-      <div class="scene-dock"     aria-hidden="true"></div>
-
-      <!-- 場景標記 -->
-      <div class="scene-version-tag" aria-hidden="true">v1 demo · 色塊佔位圖</div>
-
-      <!-- 互動提示 -->
-      <div class="scene-hint" aria-hidden="true">▾ 點擊任一船隻深入了解</div>
-
-      <!-- ── 岸上標誌（先渲染，讓船隻疊在前面） ──── -->
-
-      <!-- 造船廠 -->
-      <div class="vessel-hotspot harbor-landmark harbor-landmark--shipyard"
+      <!-- 造船廠 — 左岸工業建築 -->
+      <div class="vessel-hotspot harbor-marker" style="left:19.7%;top:37.2%"
            data-vessel="shipyard" role="button" tabindex="0"
            aria-label="造船廠，點擊了解更多">
-        <span class="harbor-landmark-label">造船廠</span>
-        <span class="vessel-tooltip">點擊了解更多</span>
+        <span class="harbor-marker-label">造船廠</span>
       </div>
 
-      <!-- 製冰冷凍廠 -->
-      <div class="vessel-hotspot harbor-landmark harbor-landmark--cold-storage"
+      <!-- 製冰冷凍廠 — 右岸大型廠房 -->
+      <div class="vessel-hotspot harbor-marker" style="left:78%;top:28%"
            data-vessel="coldStorage" role="button" tabindex="0"
            aria-label="製冰冷凍廠，點擊了解更多">
-        <span class="harbor-landmark-label">製冰廠</span>
-        <span class="vessel-tooltip">點擊了解更多</span>
+        <span class="harbor-marker-label">製冰冷凍廠</span>
       </div>
 
-      <!-- 漁會 -->
-      <div class="vessel-hotspot harbor-landmark harbor-landmark--union"
+      <!-- 漁會 — 右岸下方碼頭右側 -->
+      <div class="vessel-hotspot harbor-marker" style="left:91.5%;top:68.8%"
            data-vessel="fishermanUnion" role="button" tabindex="0"
            aria-label="漁會，點擊了解更多">
-        <span class="harbor-landmark-label">漁會</span>
-        <span class="vessel-tooltip">點擊了解更多</span>
+        <span class="harbor-marker-label">漁會</span>
       </div>
 
-      <!-- 台灣中油花蓮漁船站 -->
-      <div class="vessel-hotspot harbor-landmark harbor-landmark--oil"
+      <!-- 中油漁船站 — 右岸加油站 -->
+      <div class="vessel-hotspot harbor-marker" style="left:64.8%;top:30.4%"
            data-vessel="oilStation" role="button" tabindex="0"
            aria-label="中油漁船站，點擊了解更多">
-        <span class="harbor-landmark-label">中油站</span>
-        <span class="vessel-tooltip">點擊了解更多</span>
+        <span class="harbor-marker-label">中油漁船站</span>
       </div>
 
-      <!-- 燈塔 -->
-      <div class="vessel-hotspot harbor-landmark harbor-landmark--lighthouse"
+      <!-- 燈塔 — 右上突堤頂端 -->
+      <div class="vessel-hotspot harbor-marker" style="left:56.2%;top:5.8%"
            data-vessel="lighthouse" role="button" tabindex="0"
            aria-label="燈塔，點擊了解更多">
-        <div class="harbor-lighthouse-light" aria-hidden="true"></div>
-        <span class="harbor-landmark-label">燈塔</span>
-        <span class="vessel-tooltip">點擊了解更多</span>
+        <span class="harbor-marker-label">燈塔</span>
       </div>
 
-      <!-- ── 岸上行為 ──────────────────────────────── -->
-
-      <!-- 補網、整理漁具 -->
-      <div class="vessel-hotspot harbor-activity harbor-activity--net"
+      <!-- 補網・整理漁具 — 廟前人群 -->
+      <div class="vessel-hotspot harbor-marker" style="left:78.8%;top:63.0%"
            data-vessel="netRepair" role="button" tabindex="0"
-           aria-label="補網、整理漁具，點擊了解更多">
-        <span class="harbor-activity-label">補網・整理漁具</span>
-        <span class="vessel-tooltip">點擊了解更多</span>
+           aria-label="補網・整理漁具，點擊了解更多">
+        <span class="harbor-marker-label">補網・整理漁具</span>
       </div>
 
-      <!-- 順天宮・廣場 -->
-      <div class="vessel-hotspot harbor-activity harbor-activity--temple"
+      <!-- 順天宮・廣場 — 紅屋頂廟宇 -->
+      <div class="vessel-hotspot harbor-marker" style="left:82.3%;top:55.1%"
            data-vessel="temple" role="button" tabindex="0"
            aria-label="順天宮・廣場，點擊了解更多">
-        <span class="harbor-activity-label">順天宮・廣場</span>
-        <span class="vessel-tooltip">點擊了解更多</span>
+        <span class="harbor-marker-label">順天宮・廣場</span>
       </div>
 
-      <!-- ── 船隻（後渲染，疊在建物前方） ─────────── -->
-
-      <!-- 出港漁船（鏢旗魚） -->
-      <div class="vessel-hotspot vessel-outbound"
-           data-vessel="outbound" role="button" tabindex="0"
-           aria-label="出港漁船，點擊了解鏢旗魚漁法">
-        <div class="vessel-body">
-          <div class="vessel-mast"></div>
-          <div class="vessel-harpoon-bar"></div>
-        </div>
-        <span class="vessel-label">出港・鏢旗魚</span>
-        <span class="vessel-tooltip">點擊了解更多</span>
-      </div>
-
-      <!-- 進港漁船（流刺網） -->
-      <div class="vessel-hotspot vessel-inbound"
+      <!-- 進港漁船（流刺網）— 水面中央 -->
+      <div class="vessel-hotspot harbor-marker" style="left:42%;top:32%"
            data-vessel="inbound" role="button" tabindex="0"
            aria-label="進港漁船，點擊了解流刺網漁法">
-        <div class="vessel-body">
-          <div class="vessel-mast"></div>
-          <div class="vessel-equipment vessel-equipment--net"></div>
-        </div>
-        <span class="vessel-label">進港・流刺網</span>
-        <span class="vessel-tooltip">點擊了解更多</span>
+        <span class="harbor-marker-label">進港・流刺網</span>
       </div>
 
-      <!-- 賞鯨船 -->
-      <div class="vessel-hotspot vessel-whale"
+      <!-- 出港漁船（鏢旗魚）— 水面下方 -->
+      <div class="vessel-hotspot harbor-marker" style="left:71.2%;top:72.8%"
+           data-vessel="outbound" role="button" tabindex="0"
+           aria-label="出港漁船，點擊了解鏢旗魚漁法">
+        <span class="harbor-marker-label">出港・鏢旗魚</span>
+      </div>
+
+      <!-- 賞鯨船 — 底部大白船 -->
+      <div class="vessel-hotspot harbor-marker" style="left:63.4%;top:85.8%"
            data-vessel="whaleWatching" role="button" tabindex="0"
            aria-label="賞鯨船，點擊了解生態旅遊轉型">
-        <div class="vessel-body">
-          <div class="vessel-mast vessel-mast--tall"></div>
-          <div class="vessel-equipment vessel-equipment--radar"></div>
-        </div>
-        <span class="vessel-label">賞鯨船</span>
-        <span class="vessel-tooltip">點擊了解更多</span>
+        <span class="harbor-marker-label">賞鯨船</span>
       </div>
 
     </div><!-- /.harbor-scene -->
