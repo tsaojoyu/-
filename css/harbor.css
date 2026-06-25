@@ -91,6 +91,24 @@
   border-top-color: var(--gold);
 }
 
+/* 補網標籤改到下方 */
+.harbor-marker--label-below .harbor-marker-label {
+  bottom: auto;
+  top: calc(100% + 8px);
+}
+
+.harbor-marker--label-below .harbor-marker-label::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: rgba(27, 73, 101, 0.55);
+}
+
+.harbor-marker--label-below:hover .harbor-marker-label::after {
+  border-top-color: transparent;
+  border-bottom-color: var(--gold);
+}
+
 /* ══════════════════════════════════════════════════
    Lightbox
 ══════════════════════════════════════════════════ */
@@ -259,7 +277,6 @@
 .lightbox-video-wrap {
   margin-bottom: 0.75rem;
   background: #000;
-  border: 2px solid var(--ink);
 }
 
 .lightbox-video-wrap video {
@@ -280,13 +297,11 @@
 
 /* 圖片輪播 */
 .lightbox-gallery {
-  border: 2px solid var(--ink);
 }
 
 .gallery-stage {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
   background: #1a1510;
   overflow: hidden;
 }
@@ -294,8 +309,7 @@
 .gallery-img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
 .gallery-arrow {

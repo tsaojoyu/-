@@ -84,7 +84,10 @@ const VESSELS_DATA = {
     description: '漁船出海捕魚時，除了油之外，還有一個很重要的東西就是「冰」。\n\n魚被捕上來之後，如果沒有馬上降溫，在太陽和海上高溫的環境下，很快就會變質、發臭。所以漁船一定要用大量的冰，來保持魚的新鮮度。簡單來說，冰的作用就是「幫魚保鮮」，讓魚在回港之前都維持品質，這樣才可以賣到好價格。\n\n在花蓮港附近，就有「製冰冷凍廠」。漁船在出海前或回港補給時，就會來製冰廠買冰，把冰裝進船上的冰艙或冷藏空間。這些冰不只是放魚用，有時也會用來降溫船艙，讓整個保存環境更穩定。',
     quote: '「像我們都會直接跟製冰廠說『三支（sann ki）』，他就會抓三支冰出來。」',
     quoteSource: '漁民，訪談記錄',
-    images: [],
+    images: [
+      'images/vessels/ice-2.jpg',
+      'images/vessels/ice-1.jpg'
+    ],
     video: null
   },
 
@@ -95,7 +98,9 @@ const VESSELS_DATA = {
     description: '花蓮漁會是連結漁民、港口和市場的重要組織。\n\n對漁民來說，漁會就像是「後勤支援基地」，例如魚貨的拍賣與交易、冷藏保存與運輸、漁具和油料的協助等，都可以透過漁會來幫忙。\n\n另外，漁會也會提供保險、補助資訊，或在颱風來臨、海象不好時提醒漁民注意安全。簡單來說，就是讓漁民可以更安心出海，把主要精力放在捕魚上。',
     quote: null,
     quoteSource: null,
-    images: [],
+    images: [
+      'images/vessels/association.jpg'
+    ],
     video: null
   },
 
@@ -106,7 +111,10 @@ const VESSELS_DATA = {
     description: '漁船跟機車汽車一樣，需要加油才可以繼續跑起來！\n\n需要加油的漁船在進港之後，會開到加油區，接著把油槽打開，油管拉到船上，確認接好之後就會開始加油。\n\n一般汽車的油箱比較小，大約幾十公升就足夠；但漁船的油箱非常大，會依照船的大小不同，從「數百公升到數千公升」來計算加油量。因為一趟出海可能要跑很遠，也可能在海上待上好幾天甚至更久，所以需要大量燃油支撐。\n\n同時，因為加油量大，加上海上作業環境有搖晃、潮濕等因素，所以漁船的防火設施特別重要，船員也需要接受海上安全訓練與相關證照訓練，才能安全出海作業。',
     quote: null,
     quoteSource: null,
-    images: [],
+    images: [
+      'images/vessels/oil-1.jpg',
+      'images/vessels/oil-2.jpg'
+    ],
     video: null
   },
 
@@ -148,6 +156,7 @@ const VESSELS_DATA = {
     quote: null,
     quoteSource: null,
     images: [
+      'images/vessels/temple.jpg',
       'images/vessels/temple-01.jpg'
     ],
     video: null
