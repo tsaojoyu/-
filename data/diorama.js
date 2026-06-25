@@ -85,7 +85,7 @@ const DIORAMA_DATA = {
         description: '即白皮旗魚，俗稱「丁挽」或「翹翅仔」，每年冬季洄游至花東海域，為過去花蓮港鏢刺漁業最主要的目標魚種。',
         quote: null,
         quoteSource: null,
-        images: []
+        images: ['images/diorama/striped-marlin.jpg']
       },
       {
         name: '大棘大眼鯛（紅目鰱）',
@@ -93,7 +93,7 @@ const DIORAMA_DATA = {
         description: '俗稱「紅目鰱」，曾經在花蓮海域數量龐大的魚種，並且分布極廣，但近年來已不常見，漁民也不再以牠為主要目標。',
         quote: null,
         quoteSource: null,
-        images: []
+        images: ['images/diorama/red-bigeye.jpg']
       },
       {
         name: '赤鯥（紅喉）',
@@ -101,7 +101,7 @@ const DIORAMA_DATA = {
         description: '俗稱「紅喉」，底棲形魚類，一般由深水的延繩釣，或是底刺網捕獲。',
         quote: null,
         quoteSource: null,
-        images: []
+        images: ['images/diorama/blackthroat-seaperch.jpg']
       },
       {
         name: '康氏馬加鰆（馬加）',
@@ -109,7 +109,7 @@ const DIORAMA_DATA = {
         description: '俗稱「馬加」，漁民一般認為棲息在深度 50 米以內的近岸水域，在花蓮海域經常被流刺網或曳繩釣捕獲。',
         quote: null,
         quoteSource: null,
-        images: []
+        images: ['images/diorama/spanish-mackerel.jpg']
       },
       {
         name: '鬼頭刀',
@@ -117,7 +117,7 @@ const DIORAMA_DATA = {
         description: '大洋性洄游魚類，每年春季開始會行經花蓮海域，常見牠游動於海水表層，是延繩釣漁業主要的目標魚種之一。',
         quote: null,
         quoteSource: null,
-        images: []
+        images: ['images/diorama/mahi-mahi.jpg']
       }
     ]
   },
@@ -177,7 +177,8 @@ const DIORAMA_DATA = {
         description: '延繩釣是花蓮港最普遍的漁法之一，臺語稱為「放緄」。其作業原理是將多條掛有釣鉤的支繩（子線）繫結於一條長達數公里的主繩（母線）上，出航時沿途拋放、綁上浮球與衛星信標定位，待魚群上鉤後折返收線。花蓮海域的延繩釣主要漁獲，有鬼頭刀、紅喉等。',
         quote: null,
         quoteSource: null,
-        images: []
+        images: [],
+        video: 'images/diorama/longline-mahimahi.mov'
       },
       {
         name: '流刺網',
@@ -209,7 +210,8 @@ const DIORAMA_DATA = {
         description: '焚寄網屬於燈火漁業，透過在夜間海面投放集魚燈，誘使趨光魚群聚集後再行捕撈。\n\n花蓮港目前僅約四、五艘焚寄網漁船，主要捕捉四破魚，作業季節集中於每年七月至九月。\n\n焚寄網漁船兩側各有一支長形白鐵竿，出航後漁民先投放集魚燈、停船靜待魚群聚集，確認時機成熟後再將鐵竿向外展開，裝設其上的網具便隨之入水展開捕撈。',
         quote: null,
         quoteSource: null,
-        images: []
+        images: [],
+        video: 'images/diorama/焚寄網.mov'
       }
     ]
   }

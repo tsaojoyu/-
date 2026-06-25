@@ -14,7 +14,6 @@
   height: 600px;
   overflow: hidden;
   border: 3px solid var(--ink);
-  box-shadow: 6px 6px 0 var(--ink);
   cursor: default;
   user-select: none;
 }
@@ -188,16 +187,13 @@
   flex: 1;
   position: relative;
   border: 2px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .vessel-hotspot:hover .vessel-body,
 .vessel-hotspot:focus .vessel-body {
   border-color: var(--gold-light);
-  box-shadow:
-    0 0 18px var(--gold-glow),
-    3px 3px 0 var(--ink);
+  box-shadow: 0 0 18px var(--gold-glow);
 }
 
 /* 桅桿 */
@@ -272,7 +268,6 @@
   background: var(--ink);
   padding: 2px 8px;
   white-space: nowrap;
-  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
 }
 
 /* Tooltip（hover 才出現） */
@@ -291,7 +286,6 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.15s ease, transform 0.15s ease;
-  box-shadow: 2px 2px 0 var(--ink);
   z-index: 10;
 }
 
@@ -359,7 +353,6 @@
   justify-content: flex-end;
   padding-bottom: 4px;
   border: 2px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
   overflow: visible;
   transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
@@ -368,7 +361,7 @@
 .harbor-landmark:focus {
   outline: none;
   border-color: var(--gold-light);
-  box-shadow: 0 0 18px var(--gold-glow), 3px 3px 0 var(--ink);
+  box-shadow: 0 0 18px var(--gold-glow);
 }
 
 .harbor-landmark-label {
@@ -406,11 +399,6 @@
   border-width: 3px;
 }
 
-.harbor-landmark--radio {
-  left: 35%; top: 70%; width: 8%;  height: 30%;
-  background: #3a2e1c;
-}
-
 .harbor-landmark--oil {
   left: 57%; top: 73%; width: 9%;  height: 27%;
   background: #1e1e28;
@@ -437,29 +425,6 @@
   box-shadow: 0 0 14px var(--gold-glow), 0 0 6px var(--gold);
   pointer-events: none;
 }
-
-/* 廣播電台天線 */
-.harbor-radio-antenna {
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 26px;
-  background: rgba(255, 255, 255, 0.65);
-  pointer-events: none;
-}
-.harbor-radio-antenna::before,
-.harbor-radio-antenna::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 2px;
-  background: rgba(255, 255, 255, 0.45);
-}
-.harbor-radio-antenna::before { top: 5px;  width: 14px; }
-.harbor-radio-antenna::after  { top: 12px; width: 10px; }
 
 /* ══════════════════════════════════════════════════
    岸上行為（虛線區域）
@@ -535,7 +500,6 @@
   overflow-y: auto;
   position: relative;
   border: 3px solid var(--ink);
-  box-shadow: 8px 8px 0 var(--ink);
   background-image: repeating-linear-gradient(
     0deg,
     transparent 0px,
@@ -674,7 +638,6 @@
   margin-bottom: 0.75rem;
   background: #000;
   border: 2px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
 }
 
 .lightbox-video-wrap video {
@@ -696,7 +659,6 @@
 /* 圖片輪播 */
 .lightbox-gallery {
   border: 2px solid var(--ink);
-  box-shadow: 3px 3px 0 var(--ink);
 }
 
 .gallery-stage {

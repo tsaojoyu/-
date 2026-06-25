@@ -32,7 +32,7 @@ const VESSELS_DATA = {
       'https://picsum.photos/seed/outbound-a/800/450',
       'https://picsum.photos/seed/outbound-b/800/450'
     ],
-    video: '../800351249.657811.mp4'
+    video: 'images/vessels/outbound-harpoon.mp4'
   },
 
   inbound: {
@@ -95,17 +95,6 @@ const VESSELS_DATA = {
     description: '花蓮漁會是連結漁民、港口和市場的重要組織。\n\n對漁民來說，漁會就像是「後勤支援基地」，例如魚貨的拍賣與交易、冷藏保存與運輸、漁具和油料的協助等，都可以透過漁會來幫忙。\n\n另外，漁會也會提供保險、補助資訊，或在颱風來臨、海象不好時提醒漁民注意安全。簡單來說，就是讓漁民可以更安心出海，把主要精力放在捕魚上。',
     quote: null,
     quoteSource: null,
-    images: [],
-    video: null
-  },
-
-  radio: {
-    name: '廣播電台（無線電）',
-    badge: '漁港設施 · 通訊',
-    subtitle: '海上唯一的聲音聯繫',
-    description: '無線電是漁船在海上與陸地保持聯繫的核心設備。漁港的無線電廣播電台定時播報氣象、漁況與緊急通知，漁民也透過無線電互相通報魚群位置。在衛星電話普及之前，這個頻道是家人等候消息的唯一管道。【佔位文字，待替換】',
-    quote: '「出去的時候，我媽媽每天定時守在收音機旁邊。沒有聲音傳回來，她就不睡。」',
-    quoteSource: '漁民家屬，訪談記錄（佔位）',
     images: [],
     video: null
   },

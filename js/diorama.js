@@ -17,6 +17,126 @@
 (function () {
   'use strict';
 
+  /* ── 影片浮動視窗 ──────────────────────────────── */
+  var videoModal = null;
+  var videoModalEl = null;
+
+  function createVideoModal() {
+    videoModal = document.createElement('div');
+    videoModal.className = 'diorama-video-modal';
+
+    var inner = document.createElement('div');
+    inner.className = 'diorama-video-modal-inner';
+
+    var closeBtn = document.createElement('button');
+    closeBtn.className = 'diorama-video-modal-close';
+    closeBtn.setAttribute('aria-label', '關閉影片');
+    closeBtn.textContent = '✕';
+    closeBtn.addEventListener('click', closeVideoModal);
+
+    videoModalEl = document.createElement('video');
+    videoModalEl.controls = true;
+    videoModalEl.preload = 'metadata';
+    videoModalEl.setAttribute('playsinline', '');
+
+    var errMsg = document.createElement('p');
+    errMsg.className = 'diorama-video-modal-error';
+    errMsg.textContent = '此影片格式無法在瀏覽器中播放，建議將影片轉換為 .mp4 格式。';
+    errMsg.style.display = 'none';
+
+    videoModalEl.addEventListener('error', function () {
+      if (videoModalEl.getAttribute('src')) {
+        videoModalEl.style.display = 'none';
+        errMsg.style.display = 'block';
+      }
+    });
+
+    inner.appendChild(closeBtn);
+    inner.appendChild(videoModalEl);
+    inner.appendChild(errMsg);
+    videoModal.appendChild(inner);
+
+    videoModal.addEventListener('click', function (e) {
+      if (e.target === videoModal) closeVideoModal();
+    });
+
+    document.body.appendChild(videoModal);
+  }
+
+  function openVideoModal(src) {
+    if (!videoModal) createVideoModal();
+    var errMsg = videoModal.querySelector('.diorama-video-modal-error');
+    errMsg.style.display = 'none';
+    videoModalEl.style.display = 'block';
+    videoModalEl.src = src;
+    videoModalEl.load();
+    videoModal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeVideoModal() {
+    if (!videoModal) return;
+    videoModal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    videoModalEl.pause();
+    videoModalEl.removeAttribute('src');
+    videoModalEl.load();
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && videoModal && videoModal.classList.contains('is-open')) {
+      closeVideoModal();
+    }
+  });
+
+  /* ── 圖片放大檢視 ──────────────────────────────── */
+  var imgModal = null;
+  var imgModalEl = null;
+
+  function createImgModal() {
+    imgModal = document.createElement('div');
+    imgModal.className = 'diorama-img-modal';
+
+    var closeBtn = document.createElement('button');
+    closeBtn.className = 'diorama-img-modal-close';
+    closeBtn.setAttribute('aria-label', '關閉圖片');
+    closeBtn.textContent = '✕';
+    closeBtn.addEventListener('click', closeImgModal);
+
+    imgModalEl = document.createElement('img');
+    imgModalEl.className = 'diorama-img-modal-img';
+    imgModalEl.alt = '放大檢視';
+
+    imgModal.appendChild(closeBtn);
+    imgModal.appendChild(imgModalEl);
+
+    imgModal.addEventListener('click', function (e) {
+      if (e.target === imgModal) closeImgModal();
+    });
+
+    document.body.appendChild(imgModal);
+  }
+
+  function openImgModal(src) {
+    if (!imgModal) createImgModal();
+    imgModalEl.src = src;
+    imgModal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeImgModal() {
+    if (!imgModal) return;
+    imgModal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    imgModalEl.removeAttribute('src');
+  }
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && imgModal && imgModal.classList.contains('is-open')) {
+      closeImgModal();
+    }
+  });
+
   /* ── 圖片輪播區塊 ──────────────────────────────── */
   function buildImageBlock(images) {
     var wrap  = document.createElement('div');
@@ -27,7 +147,12 @@
 
     var img = document.createElement('img');
     img.className = 'diorama-strip-card-img';
-    img.alt = '說明圖片';
+    img.alt = '說明圖片（點擊放大）';
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', function (e) {
+      e.stopPropagation();
+      openImgModal(img.src);
+    });
     stage.appendChild(img);
 
     var counter = null;
@@ -113,6 +238,17 @@
       card.appendChild(cite);
     }
 
+    if (item.video) {
+      var videoBtn = document.createElement('button');
+      videoBtn.className = 'diorama-video-btn';
+      videoBtn.textContent = '▶ 播放影片';
+      videoBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        openVideoModal(item.video);
+      });
+      card.appendChild(videoBtn);
+    }
+
     return card;
   }
 
@@ -127,12 +263,12 @@
       var dist        = Math.abs(cardCenter - trackCenter);
       var factor      = Math.max(0, 1 - dist / maxDist);
 
-      var opacity     = 0.45 + 0.55 * factor;
-      var scale       = 0.91 + 0.12 * factor;
-      var translateY  = -10  * factor;
-      var shadowY     = 1    + 20  * factor;
-      var shadowBlur  = 2    + 38  * factor;
-      var shadowAlpha = 0.04 + 0.30 * factor;
+      var opacity     = 0.70 + 0.30 * factor;
+      var scale       = 0.95 + 0.05 * factor;
+      var translateY  = -6   * factor;
+      var shadowY     = 1    + 12  * factor;
+      var shadowBlur  = 2    + 24  * factor;
+      var shadowAlpha = 0.04 + 0.18 * factor;
 
       card.style.opacity   = opacity.toFixed(2);
       card.style.transform =

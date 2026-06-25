@@ -20,7 +20,6 @@
   height: 700px;
   overflow: hidden;
   border: 3px solid var(--ink);
-  box-shadow: 6px 6px 0 var(--ink);
   cursor: default;
   user-select: none;
 }
@@ -93,7 +92,6 @@
   align-items: center;
   justify-content: center;
   border: 2px solid var(--ink);
-  box-shadow: 2px 2px 0 var(--ink);
   transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
@@ -105,7 +103,7 @@
 
 .diorama-hotspot.is-active {
   border-color: var(--gold-light);
-  box-shadow: 0 0 14px var(--gold-glow), 2px 2px 0 var(--ink);
+  box-shadow: 0 0 14px var(--gold-glow);
   transform: translateY(-3px);
 }
 
@@ -167,7 +165,6 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.15s ease, transform 0.15s ease;
-  box-shadow: 2px 2px 0 var(--ink);
   z-index: 10;
 }
 
@@ -200,7 +197,6 @@
 }
 
 .diorama-strip:last-child {
-  box-shadow: 6px 6px 0 var(--ink);
 }
 
 /* ── 標題列（點擊展開） */
@@ -392,7 +388,6 @@
 .diorama-strip-card-media {
   margin-bottom: 1.1rem;
   border: 2px solid var(--ink);
-  box-shadow: 2px 2px 0 var(--ink);
 }
 
 .diorama-strip-card-image-stage {
@@ -407,8 +402,9 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+  object-fit: contain;
+  background: #1a1510;
+  pointer-events: auto;
 }
 
 .diorama-strip-img-arrow {
@@ -454,7 +450,6 @@
 .diorama-deep-links {
   margin-top: 1.5rem;
   border: 3px solid var(--ink);
-  box-shadow: 6px 6px 0 var(--ink);
 }
 
 .deep-links-label {
@@ -536,3 +531,144 @@
 #strip-techniques .diorama-strip-header .diorama-strip-back-btn { color: #1b4965; border-color: rgba(27, 73, 101, 0.35); }
 #strip-techniques .diorama-strip-card-rule { background: #5fa8d3; }
 #strip-techniques .diorama-strip-card-quote { border-left-color: #5fa8d3; background: rgba(190, 233, 232, 0.18); }
+
+/* ══════════════════════════════════════════════════
+   卡片影片按鈕
+══════════════════════════════════════════════════ */
+
+.diorama-video-btn {
+  display: inline-block;
+  margin-top: 1.1rem;
+  background: var(--ink);
+  color: var(--paper);
+  border: 2px solid var(--ink);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.4rem 1.1rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.diorama-video-btn:hover {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+
+/* ══════════════════════════════════════════════════
+   影片浮動視窗
+══════════════════════════════════════════════════ */
+
+.diorama-video-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 21, 16, 0.92);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+
+.diorama-video-modal.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.diorama-video-modal-inner {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+}
+
+.diorama-video-modal-close {
+  position: absolute;
+  top: -2.5rem;
+  right: 0;
+  background: none;
+  border: none;
+  color: var(--paper);
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0.3rem 0.5rem;
+  transition: color 0.15s ease;
+}
+
+.diorama-video-modal-close:hover {
+  color: var(--gold);
+}
+
+.diorama-video-modal-inner video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 2px solid var(--ink);
+}
+
+/* ══════════════════════════════════════════════════
+   圖片放大檢視
+══════════════════════════════════════════════════ */
+
+.diorama-img-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 21, 16, 0.92);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+  cursor: zoom-out;
+}
+
+.diorama-img-modal.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.diorama-img-modal-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--paper);
+  font-size: 1.4rem;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0.3rem 0.5rem;
+  z-index: 201;
+  transition: color 0.15s ease;
+}
+
+.diorama-img-modal-close:hover {
+  color: var(--gold);
+}
+
+.diorama-img-modal-img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 2px solid var(--ink);
+  background: #1a1510;
+}
+
+.diorama-video-modal-error {
+  text-align: center;
+  padding: 2rem;
+  color: #8a7a62;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+}

@@ -241,3 +241,27 @@ body {
   background: var(--gold);
   color: #0a1e2e;
 }
+
+/* ══════════════════════════════════════════════════
+   頁尾
+══════════════════════════════════════════════════ */
+
+.site-footer {
+  max-width: var(--max-width);
+  margin: var(--section-gap) auto 2rem;
+  padding: 1.5rem 2rem;
+  border-top: 2px solid var(--ink);
+  font-size: 0.78rem;
+  color: #6a5a48;
+  letter-spacing: 0.04em;
+}
+
+.site-footer a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-footer a:hover {
+  color: var(--gold);
+}
