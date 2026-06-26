@@ -12,12 +12,12 @@
   position: relative;
   max-width: 100%;
   max-height: 92vh;
-  aspect-ratio: 1680 / 1292;
+  aspect-ratio: 2560 / 1440;
   margin: 0 auto;
   overflow: visible;
   cursor: default;
   user-select: none;
-  background-image: url('../images/vessels/漁港bg.png');
+  background-image: url('../images/vessels/harbor bg_wider.png');
   background-size: cover;
   background-position: center;
 }

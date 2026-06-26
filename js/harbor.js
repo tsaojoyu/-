@@ -21,7 +21,8 @@
   const badgeEl       = document.getElementById('lightboxBadge');
   const titleEl       = document.getElementById('lightboxTitle');
   const subtitleEl    = document.getElementById('lightboxSubtitle');
-  const descriptionEl = document.getElementById('lightboxDescription');
+  const descriptionLabelEl = document.getElementById('lightboxDescriptionLabel');
+  const descriptionEl      = document.getElementById('lightboxDescription');
   const quoteEl       = document.getElementById('lightboxQuote');
   const citeEl        = document.getElementById('lightboxCite');
 
@@ -101,12 +102,20 @@
     const data = VESSELS_DATA[vesselKey];
     if (!data) return;
 
-    badgeEl.textContent       = data.badge;
-    titleEl.textContent       = data.name;
-    subtitleEl.textContent    = data.subtitle;
-    descriptionEl.textContent = data.description;
-    quoteEl.textContent       = data.quote;
-    citeEl.textContent        = data.quoteSource;
+    badgeEl.textContent              = data.badge;
+    titleEl.textContent              = data.name;
+    subtitleEl.textContent           = data.subtitle;
+    descriptionLabelEl.textContent   = data.descriptionLabel || '內容介紹';
+    descriptionEl.textContent        = data.description;
+
+    const quoteSection = quoteEl.closest('.lightbox-section');
+    if (data.quote) {
+      quoteEl.textContent        = data.quote;
+      citeEl.textContent         = data.quoteSource;
+      quoteSection.style.display = '';
+    } else {
+      quoteSection.style.display = 'none';
+    }
 
     renderMedia(data);
 
