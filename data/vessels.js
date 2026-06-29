@@ -45,7 +45,8 @@ const VESSELS_DATA = {
     quote: '「之前有遇過海豚群，把流刺網上面的魚當作高級自助餐，把魚身魚尾吃掉，魚頭刺在網上的就不吃，等我們把網拉上來才發現只剩下整面的魚頭」',
     quoteSource: '流刺網漁民，訪談記錄',
     images: [
-      'images/vessels/進港漁船-01.jpg'
+      'images/vessels/進港漁船-01.jpg',
+      'images/vessels/進港漁船-02.jpg'
     ],
     video: 'images/vessels/進港漁船 流刺網收網(記得靜音).mp4',
     videoMuted: true

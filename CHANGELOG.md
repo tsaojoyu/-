@@ -496,11 +496,54 @@ css/harbor.css    新增 white-space: pre-wrap
 - `quote` 為 `null` 的熱區，Lightbox 內「訪談節錄」區塊自動隱藏
 
 ### 待辦（下一階段）
-- [ ] 延伸閱讀 URL：Google Maps 漁場地圖連結
-- [ ] 出港/進港漁船：替換 picsum 佔位圖為實際照片
-- [ ] 造船廠：補照片
+- [x] 延伸閱讀 URL：《看山版，聽流水》已填入
+- [x] 出港/進港漁船：替換 picsum 佔位圖為實際照片
+- [x] 造船廠：補照片
+- [ ] 延伸閱讀 URL：Google Maps 漁場地圖連結（仍為 #）
 - [ ] 今昔比對現代影像：5 張右側照片
-- [ ] 箱庭插畫：8 張物件 + 可選底圖
 - [ ] 視覺風格改版：白底 + 無襯線 + 留白（等素材齊全後執行）
+- [ ] 響應式設計
+- [ ] Netlify 正式部署
+
+---
+
+## v3.0 — 2026-06-29
+
+### 漁場箱庭場景全面改版（seascape）+ 漁港素材大量補入
+
+#### 漁場箱庭插畫場景（seascape）
+- 移除舊色塊佔位場景（`.diorama-scene`），換為全新插畫版（`.seascape`）
+- 場景由插畫家去背 PNG 多層疊加組成：背景圖、洋流×5、魚種×5、漁法說明
+- 熱區改為不可見 `<button class="seascape-hotspot">`，hover 對應圖層以 `is-lit` 亮起
+- 漁場改為金色標點式（`.seascape-ground-marker`），與漁港標點風格一致
+- 新增座標工具（點擊插畫顯示 left/top %，`display:none` 預設隱藏，需用時開啟）
+
+#### 箱庭卡片更新
+- 魚種卡片圖片：Wikimedia Commons 照片 → 插畫家 PNG（`旗魚-new.png` 等）
+- 移除卡片圖片點擊放大功能（`.diorama-img-modal` 整組移除）
+- 卡片圖片背景由深棕（`#1a1510`）改為淡藍（`#daedf6`），配合插畫色調
+
+#### 新增 JS 精準跳卡（`openStripAndGoToCard`）
+- seascape 熱區點擊 → 展開對應橫條 → 定位到指定卡片 → 金色閃爍提示
+
+#### 漁港素材補充
+| 類型 | 檔案 | 補充說明 |
+|------|------|----------|
+| 出港漁船照片 | `出港漁船-01.jpg`、`出港漁船-02.jpg` | 取代 picsum 佔位 |
+| 進港漁船照片 | `進港漁船-01.jpg`、`進港漁船-02.jpg` | 取代 picsum 佔位 |
+| 進港漁船影片 | `進港漁船 流刺網收網(記得靜音).mp4` | 靜音播放（`videoMuted: true`） |
+| 造船廠照片 | `造船廠-01.jpg` | 新補 |
+| 賞鯨船照片 | `whale-02.jpg` | 第二張 |
+
+#### 其他
+- `harbor.js` 新增 `videoMuted` 支援
+- `vessels.js` 進港漁船補入第二張照片（`進港漁船-02.jpg`）
+
+### 待辦（下一階段）
+- [ ] 延伸閱讀 URL：Google Maps 漁場地圖連結（`data/diorama.js` DIORAMA_LINKS[0].url）
+- [ ] 今昔比對現代影像：5 張右側照片（`images/compare-new-1~5.jpg`）
+- [ ] seascape 熱區微調：確認所有標點位置後移除座標工具
+- [ ] 鏢尾漁場標點：補入 seascape（`data-index="1"`）
+- [ ] 視覺風格改版：白底 + 無襯線 + 留白
 - [ ] 響應式設計
 - [ ] Netlify 正式部署
