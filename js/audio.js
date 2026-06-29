@@ -16,12 +16,12 @@
   function start() {
     if (started) return;
     started = true;
-    audio.volume = 0.35;
+    audio.volume = 0.75;
     audio.play().catch(function () {});
   }
 
   /* 嘗試自動播放 */
-  audio.volume = 0.35;
+  audio.volume = 0.75;
   audio.play().then(function () {
     started = true;
   }).catch(function () {
