@@ -571,39 +571,5 @@
   });
 
 
-  /* ── 座標工具 ────────────────────────────── */
-  var seascapeEl  = document.querySelector('.seascape');
-  var coordWrap   = document.getElementById('seascapeCoordWrap');
-  var coordInput  = document.getElementById('seascapeCoordDisplay');
-  var coordCopy   = document.getElementById('seascapeCoordCopy');
-  var coordCopied = document.getElementById('seascapeCoordCopied');
-  var copyTimer   = null;
-
-  if (seascapeEl && coordInput) {
-    if (coordWrap) coordWrap.style.display = 'flex';
-    seascapeEl.addEventListener('click', function (e) {
-      var rect = seascapeEl.getBoundingClientRect();
-      var x = ((e.clientX - rect.left) / rect.width  * 100).toFixed(1);
-      var y = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1);
-      coordInput.value = 'left: ' + x + '%  top: ' + y + '%';
-    });
-  }
-
-  if (coordCopy && coordInput) {
-    coordCopy.addEventListener('click', function () {
-      coordInput.select();
-      var text = coordInput.value;
-      if (navigator.clipboard && text) {
-        navigator.clipboard.writeText(text).catch(function () { document.execCommand('copy'); });
-      } else {
-        document.execCommand('copy');
-      }
-      if (coordCopied) {
-        coordCopied.classList.add('is-visible');
-        clearTimeout(copyTimer);
-        copyTimer = setTimeout(function () { coordCopied.classList.remove('is-visible'); }, 1500);
-      }
-    });
-  }
 
 })();
