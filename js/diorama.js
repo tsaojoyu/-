@@ -89,53 +89,6 @@
     }
   });
 
-  /* ── 圖片放大檢視 ──────────────────────────────── */
-  var imgModal = null;
-  var imgModalEl = null;
-
-  function createImgModal() {
-    imgModal = document.createElement('div');
-    imgModal.className = 'diorama-img-modal';
-
-    var closeBtn = document.createElement('button');
-    closeBtn.className = 'diorama-img-modal-close';
-    closeBtn.setAttribute('aria-label', '關閉圖片');
-    closeBtn.textContent = '✕';
-    closeBtn.addEventListener('click', closeImgModal);
-
-    imgModalEl = document.createElement('img');
-    imgModalEl.className = 'diorama-img-modal-img';
-    imgModalEl.alt = '放大檢視';
-
-    imgModal.appendChild(closeBtn);
-    imgModal.appendChild(imgModalEl);
-
-    imgModal.addEventListener('click', function (e) {
-      if (e.target === imgModal) closeImgModal();
-    });
-
-    document.body.appendChild(imgModal);
-  }
-
-  function openImgModal(src) {
-    if (!imgModal) createImgModal();
-    imgModalEl.src = src;
-    imgModal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeImgModal() {
-    if (!imgModal) return;
-    imgModal.classList.remove('is-open');
-    document.body.style.overflow = '';
-    imgModalEl.removeAttribute('src');
-  }
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && imgModal && imgModal.classList.contains('is-open')) {
-      closeImgModal();
-    }
-  });
 
   /* ── 圖片輪播區塊 ──────────────────────────────── */
   function buildImageBlock(images) {
@@ -147,12 +100,7 @@
 
     var img = document.createElement('img');
     img.className = 'diorama-strip-card-img';
-    img.alt = '說明圖片（點擊放大）';
-    img.style.cursor = 'zoom-in';
-    img.addEventListener('click', function (e) {
-      e.stopPropagation();
-      openImgModal(img.src);
-    });
+    img.alt = '說明圖片';
     stage.appendChild(img);
 
     var counter = null;
@@ -566,5 +514,102 @@
   }
 
   renderDeepLinks();
+
+  /* ── seascape 熱區：點擊展開對應橫條並定位到特定卡片 ── */
+  function openStripAndGoToCard(catKey, itemIndex) {
+    var strip = document.getElementById('strip-' + catKey);
+    if (!strip) return;
+
+    openStrip(strip, function () {
+      var track = strip.querySelector('.diorama-strip-track');
+      var cards = track.querySelectorAll('.diorama-strip-card');
+      var card  = cards[itemIndex];
+      if (!card) { updateDepth(track); return; }
+      var targetLeft = card.offsetLeft - (track.offsetWidth - card.offsetWidth) / 2;
+      track.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
+      setTimeout(function () {
+        updateDepth(track);
+        track.querySelectorAll('.is-highlighted').forEach(function (c) { c.classList.remove('is-highlighted'); });
+        void card.offsetWidth;
+        card.classList.add('is-highlighted');
+        setTimeout(function () { card.classList.remove('is-highlighted'); }, 1700);
+      }, 400);
+    });
+
+    setTimeout(function () {
+      strip.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  }
+
+  document.querySelectorAll('.seascape-hotspot').forEach(function (btn) {
+    var layerId = 'seascape-layer-' + btn.dataset.category + '-' + btn.dataset.index;
+    var layer   = document.getElementById(layerId);
+
+    /* hover → 對應圖層亮起 */
+    btn.addEventListener('mouseenter', function () {
+      if (layer) layer.classList.add('is-lit');
+    });
+    btn.addEventListener('mouseleave', function () {
+      if (layer) layer.classList.remove('is-lit');
+    });
+
+    btn.addEventListener('click', function () {
+      openStripAndGoToCard(this.dataset.category, parseInt(this.dataset.index, 10));
+    });
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+    });
+  });
+
+  document.querySelectorAll('.seascape-ground-marker').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      openStripAndGoToCard('fishingGrounds', parseInt(this.dataset.index, 10));
+    });
+    btn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+    });
+  });
+
+  /* ── 座標工具（漁場打點，確認後移除）────────────── */
+  var seascapeEl  = document.querySelector('.seascape');
+  var coordWrap   = document.getElementById('seascapeCoordWrap');
+  var coordInput  = document.getElementById('seascapeCoordDisplay');
+  var coordCopy   = document.getElementById('seascapeCoordCopy');
+  var coordCopied = document.getElementById('seascapeCoordCopied');
+  var copyTimer   = null;
+
+  if (seascapeEl && coordInput) {
+    /* 顯示工具列 */
+    if (coordWrap) coordWrap.style.display = 'flex';
+
+    seascapeEl.addEventListener('click', function (e) {
+      /* 點到熱區按鈕時也更新座標（兩者都能用） */
+      var rect = seascapeEl.getBoundingClientRect();
+      var x = ((e.clientX - rect.left) / rect.width  * 100).toFixed(1);
+      var y = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1);
+      coordInput.value = 'left: ' + x + '%  top: ' + y + '%';
+    });
+  }
+
+  if (coordCopy && coordInput) {
+    coordCopy.addEventListener('click', function () {
+      coordInput.select();
+      var text = coordInput.value;
+      if (navigator.clipboard && text) {
+        navigator.clipboard.writeText(text).catch(function () {
+          document.execCommand('copy');
+        });
+      } else {
+        document.execCommand('copy');
+      }
+      if (coordCopied) {
+        coordCopied.classList.add('is-visible');
+        clearTimeout(copyTimer);
+        copyTimer = setTimeout(function () {
+          coordCopied.classList.remove('is-visible');
+        }, 1500);
+      }
+    });
+  }
 
 })();

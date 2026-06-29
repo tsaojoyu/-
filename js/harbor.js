@@ -69,6 +69,7 @@
     if (hasVideo) {
       videoErrMsg.style.display = 'none';
       videoEl.style.display     = 'block';
+      videoEl.muted = !!data.videoMuted;
       videoEl.src = data.video;
       videoEl.load();
       videoWrap.style.display = 'block';

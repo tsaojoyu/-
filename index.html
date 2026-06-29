@@ -143,95 +143,115 @@
     </div>
 
     <!-- 插畫場景 -->
-    <div class="diorama-scene" id="dioramaScene"
-         role="img" aria-label="花蓮漁場箱庭示意圖（色塊佔位版）">
+    <div class="seascape" id="dioramaScene" role="region" aria-label="花蓮漁場海洋切面插畫">
 
-      <!-- 背景圖層 -->
-      <div class="diorama-sky"  aria-hidden="true"></div>
-      <div class="diorama-sea"  aria-hidden="true"></div>
-      <div class="diorama-land" aria-hidden="true"></div>
+      <!-- ── 視覺圖層（去背 PNG 疊加，pointer-events: none） -->
+      <img class="seascape-layer" src="images/diorama/背景圖 去背.png" alt="漁場海洋切面插畫">
+      <!-- 洋流（id 供 hover 亮起使用） -->
+      <img class="seascape-layer" id="seascape-layer-currents-2" src="images/diorama/洘流.png"  alt="" aria-hidden="true">
+      <img class="seascape-layer" id="seascape-layer-currents-3" src="images/diorama/流東.png"  alt="" aria-hidden="true">
+      <img class="seascape-layer" id="seascape-layer-currents-1" src="images/diorama/南流.png"  alt="" aria-hidden="true">
+      <img class="seascape-layer" id="seascape-layer-currents-0" src="images/diorama/紅流.png"  alt="" aria-hidden="true">
+      <img class="seascape-layer" id="seascape-layer-currents-4" src="images/diorama/流巡.png"  alt="" aria-hidden="true">
+      <!-- 魚種（id 供 hover 亮起使用） -->
+      <img class="seascape-layer" id="seascape-layer-fish-0" src="images/diorama/旗魚.png"   alt="" aria-hidden="true">
+      <img class="seascape-layer" id="seascape-layer-fish-1" src="images/diorama/紅目鰱.png" alt="" aria-hidden="true">
+      <img class="seascape-layer" id="seascape-layer-fish-2" src="images/diorama/紅鯸.png"   alt="" aria-hidden="true">
+      <img class="seascape-layer" id="seascape-layer-fish-3" src="images/diorama/馬加.png"   alt="" aria-hidden="true">
+      <img class="seascape-layer" id="seascape-layer-fish-4" src="images/diorama/鬼頭刀.png" alt="" aria-hidden="true">
+      <!-- 漁船（漁法視覺提示） -->
+      <img class="seascape-layer" id="seascape-layer-techniques-0" src="images/diorama/漁法說明.png" alt="" aria-hidden="true">
 
-      <!-- 場景標記 -->
-      <div class="scene-version-tag" aria-hidden="true">v1 demo · 色塊佔位圖</div>
-      <div class="scene-hint"        aria-hidden="true">▾ 點擊任一元素深入了解</div>
+      <!-- ── 魚種熱區（不可見，hover 顯示標籤，點擊跳到介紹） -->
+      <button class="seascape-hotspot" data-category="fish" data-index="0"
+              style="left:33.2%;top:48.3%;width:8%;height:6%"
+              aria-label="立翅旗魚介紹">
+        <span class="seascape-label seascape-label--below">旗魚</span>
+      </button>
+      <button class="seascape-hotspot" data-category="fish" data-index="4"
+              style="left:56.9%;top:48.7%;width:8%;height:6%"
+              aria-label="鬼頭刀介紹">
+        <span class="seascape-label seascape-label--below">鬼頭刀</span>
+      </button>
+      <button class="seascape-hotspot" data-category="fish" data-index="1"
+              style="left:37.7%;top:58%;width:8%;height:6%"
+              aria-label="紅目鰱介紹">
+        <span class="seascape-label">紅目鰱</span>
+      </button>
+      <button class="seascape-hotspot" data-category="fish" data-index="3"
+              style="left:50.7%;top:60.1%;width:8%;height:6%"
+              aria-label="馬加介紹">
+        <span class="seascape-label">馬加</span>
+      </button>
+      <button class="seascape-hotspot" data-category="fish" data-index="2"
+              style="left:35.8%;top:69.9%;width:8%;height:6%"
+              aria-label="紅鯸介紹">
+        <span class="seascape-label">紅鯸</span>
+      </button>
 
-      <!-- ── 漁場（左側，2 個示意圖）────────────────── -->
-      <div class="diorama-hotspot diorama-hotspot--img"
-           data-category="fishingGrounds"
-           role="button" tabindex="0"
-           style="left:2%;top:10%;width:20%;height:30%"
-           aria-label="點擊展開漁場介紹">
-        <img class="diorama-hotspot-img" src="images/diorama/ground-1.png" alt="漁場示意">
-        <span class="diorama-hotspot-tooltip">點擊展開漁場介紹</span>
+      <!-- ── 洋流熱區 -->
+      <button class="seascape-hotspot" data-category="currents" data-index="2"
+              style="left:16%;top:47.7%;width:10%;height:7%"
+              aria-label="洘流介紹">
+        <span class="seascape-label seascape-label--below">洘流</span>
+      </button>
+      <button class="seascape-hotspot" data-category="currents" data-index="3"
+              style="left:16.6%;top:64.1%;width:10%;height:7%"
+              aria-label="流東介紹">
+        <span class="seascape-label">流東</span>
+      </button>
+      <button class="seascape-hotspot" data-category="currents" data-index="1"
+              style="left:62.4%;top:66.9%;width:10%;height:7%"
+              aria-label="南流介紹">
+        <span class="seascape-label">南流</span>
+      </button>
+      <button class="seascape-hotspot" data-category="currents" data-index="0"
+              style="left:79.8%;top:52.5%;width:10%;height:7%"
+              aria-label="紅流介紹">
+        <span class="seascape-label">紅流</span>
+      </button>
+      <button class="seascape-hotspot" data-category="currents" data-index="4"
+              style="left:54.2%;top:35.9%;width:12%;height:5%"
+              aria-label="流巡介紹">
+        <span class="seascape-label seascape-label--below">流巡</span>
+      </button>
+
+      <!-- ── 漁法熱區 -->
+      <button class="seascape-hotspot" data-category="techniques" data-index="0"
+              style="left:71.1%;top:31.1%;width:8%;height:8%"
+              aria-label="漁法介紹">
+        <span class="seascape-label seascape-label--below">漁法</span>
+      </button>
+
+      <!-- ── 漁場標點 -->
+      <div class="seascape-ground-marker" data-index="0" tabindex="0" style="left:59.4%;top:34.0%" aria-label="溝灣仔漁場介紹">
+        <div class="seascape-ground-dot"></div>
+        <span class="seascape-label seascape-label--below">溝灣仔</span>
+      </div>
+      <div class="seascape-ground-marker" data-index="2" tabindex="0" style="left:44.1%;top:38.4%" aria-label="紅目鰱逝漁場介紹">
+        <div class="seascape-ground-dot"></div>
+        <span class="seascape-label seascape-label--below">紅目鰱逝</span>
+      </div>
+      <div class="seascape-ground-marker" data-index="3" tabindex="0" style="left:26.0%;top:41.9%" aria-label="龜仔口漁場介紹">
+        <div class="seascape-ground-dot"></div>
+        <span class="seascape-label seascape-label--below">龜仔口</span>
+      </div>
+      <div class="seascape-ground-marker" data-index="4" tabindex="0" style="left:22.2%;top:43.6%" aria-label="ma-kong-kháu漁場介紹">
+        <div class="seascape-ground-dot"></div>
+        <span class="seascape-label seascape-label--below">ma-kong-kháu</span>
       </div>
 
-      <div class="diorama-hotspot diorama-hotspot--img"
-           data-category="fishingGrounds"
-           role="button" tabindex="0"
-           style="left:2%;top:55%;width:20%;height:30%"
-           aria-label="點擊展開漁場介紹">
-        <img class="diorama-hotspot-img" src="images/diorama/ground-2.png" alt="漁場示意">
-        <span class="diorama-hotspot-tooltip">點擊展開漁場介紹</span>
-      </div>
+    </div><!-- /.seascape -->
 
-      <!-- ── 洋流（中央海域，2 個示意圖）──────────── -->
-      <div class="diorama-hotspot diorama-hotspot--img"
-           data-category="currents"
-           role="button" tabindex="0"
-           style="left:28%;top:18%;width:18%;height:28%"
-           aria-label="點擊展開洋流介紹">
-        <img class="diorama-hotspot-img" src="images/diorama/current-1.png" alt="洋流示意">
-        <span class="diorama-hotspot-tooltip">點擊展開洋流介紹</span>
-      </div>
-
-      <div class="diorama-hotspot diorama-hotspot--img"
-           data-category="currents"
-           role="button" tabindex="0"
-           style="left:38%;top:50%;width:18%;height:28%"
-           aria-label="點擊展開洋流介紹">
-        <img class="diorama-hotspot-img" src="images/diorama/current-2.png" alt="洋流示意">
-        <span class="diorama-hotspot-tooltip">點擊展開洋流介紹</span>
-      </div>
-
-      <!-- ── 魚種（右側海域，2 個示意圖）──────────── -->
-      <div class="diorama-hotspot diorama-hotspot--img"
-           data-category="fish"
-           role="button" tabindex="0"
-           style="left:63%;top:18%;width:18%;height:28%"
-           aria-label="點擊展開魚種介紹">
-        <img class="diorama-hotspot-img" src="images/diorama/fish-1.png" alt="魚種示意">
-        <span class="diorama-hotspot-tooltip">點擊展開魚種介紹</span>
-      </div>
-
-      <div class="diorama-hotspot diorama-hotspot--img"
-           data-category="fish"
-           role="button" tabindex="0"
-           style="left:74%;top:50%;width:18%;height:28%"
-           aria-label="點擊展開魚種介紹">
-        <img class="diorama-hotspot-img" src="images/diorama/fish-2.png" alt="魚種示意">
-        <span class="diorama-hotspot-tooltip">點擊展開魚種介紹</span>
-      </div>
-
-      <!-- ── 漁法（底部，2 個示意圖）──────────────── -->
-      <div class="diorama-hotspot diorama-hotspot--img"
-           data-category="techniques"
-           role="button" tabindex="0"
-           style="left:30%;top:70%;width:16%;height:25%"
-           aria-label="點擊展開漁法介紹">
-        <img class="diorama-hotspot-img" src="images/diorama/method-1.png" alt="漁法示意">
-        <span class="diorama-hotspot-tooltip">點擊展開漁法介紹</span>
-      </div>
-
-      <div class="diorama-hotspot diorama-hotspot--img"
-           data-category="techniques"
-           role="button" tabindex="0"
-           style="left:55%;top:70%;width:16%;height:25%"
-           aria-label="點擊展開漁法介紹">
-        <img class="diorama-hotspot-img" src="images/diorama/method-2.png" alt="漁法示意">
-        <span class="diorama-hotspot-tooltip">點擊展開漁法介紹</span>
-      </div>
-
-    </div><!-- /.diorama-scene -->
+    <!-- ── 座標工具（點擊插畫後顯示，可複製，確認漁場位置後移除）-->
+    <div class="seascape-coord-wrap" id="seascapeCoordWrap" style="display:none">
+      <span class="seascape-coord-label">座標工具：點擊插畫任意位置</span>
+      <input class="seascape-coord-input" id="seascapeCoordDisplay"
+             type="text" readonly placeholder="left: 0.0%  top: 0.0%"
+             aria-label="點擊位置座標（可複製）">
+      <button class="seascape-coord-copy" id="seascapeCoordCopy" type="button">複製</button>
+      <span class="seascape-coord-copied" id="seascapeCoordCopied">已複製</span>
+    </div>
 
     <!-- 四大橫條（由 JS 從 DIORAMA_DATA 渲染） -->
     <div id="dioramaStrips"></div>
@@ -297,7 +317,7 @@
        頁尾
   ════════════════════════════════════════════ -->
   <footer class="site-footer">
-    <p>魚種照片來源：<a href="https://commons.wikimedia.org/" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>（CC BY / CC BY-SA 授權）</p>
+    <p>漁場箱庭插畫｜繪圖：趙昊雲</p>
   </footer>
 
   <!-- ════════════════════════════════════════════

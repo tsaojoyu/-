@@ -30,8 +30,8 @@ const VESSELS_DATA = {
     quote: '「長年鏢旗魚的職業病，像我現在右手有點扭曲，不能握拳。所以每次船停好之後，沒有力氣抓鐵梯，爬不上岸，所以會在船上睡覺，睡到漲潮，等船比較靠近岸上，我再上岸。」',
     quoteSource: '鏢魚師傅，訪談記錄',
     images: [
-      'https://picsum.photos/seed/outbound-a/800/450',
-      'https://picsum.photos/seed/outbound-b/800/450'
+      'images/vessels/出港漁船-01.jpg',
+      'images/vessels/出港漁船-02.jpg'
     ],
     video: 'images/vessels/outbound-harpoon.mp4'
   },
@@ -45,10 +45,10 @@ const VESSELS_DATA = {
     quote: '「之前有遇過海豚群，把流刺網上面的魚當作高級自助餐，把魚身魚尾吃掉，魚頭刺在網上的就不吃，等我們把網拉上來才發現只剩下整面的魚頭」',
     quoteSource: '流刺網漁民，訪談記錄',
     images: [
-      'https://picsum.photos/seed/inbound-a/800/450',
-      'https://picsum.photos/seed/inbound-b/800/450'
+      'images/vessels/進港漁船-01.jpg'
     ],
-    video: null
+    video: 'images/vessels/進港漁船 流刺網收網(記得靜音).mp4',
+    videoMuted: true
   },
 
   whaleWatching: {
@@ -60,7 +60,8 @@ const VESSELS_DATA = {
     quote: null,
     quoteSource: null,
     images: [
-      'images/vessels/whale-01.jpg'
+      'images/vessels/whale-01.jpg',
+      'images/vessels/whale-02.jpg'
     ],
     video: null
   },
@@ -77,7 +78,7 @@ const VESSELS_DATA = {
     description: '造船技術是一種高度複雜但精密的工程。\n\n首先，工程師會根據用途（如漁船、貨船或郵輪）設計船的藍圖，決定船的大小、形狀與載重能力。接著，分段製作大型模組，在工廠內分別完成後，再運到船塢組裝，就像拼大型積木一樣。組裝完成後，還要安裝四大系統：\n\n・動力系統：主機（如大型柴油引擎、燃氣渦輪機或電力推進馬達）、傳動軸系、減速齒輪以及螺旋槳等\n・電力系統：發電機組、配電盤、緊急發電機、冷卻水系統、空調與冷凍櫃等\n・通訊系統：雷達、電子海圖（ECDIS）、陀螺羅經、自動舵、自動識別系統（AIS）等\n・安全系統：滅火器、消防水帶、救生衣、救生圈、救生筏等\n\n最後會進行下水測試，確認船是否會漏水、動力是否正常、航行是否穩定。通過測試後，船才算正式完成並可以使用。\n\n而現在花蓮港的中信造船廠，它的角色比較像「船隻的維修站」，支援船舶維修、保養與支援部分造船相關作業。',
     quote: null,
     quoteSource: null,
-    images: [],
+    images: ['images/vessels/造船廠-01.jpg'],
     video: null
   },
 

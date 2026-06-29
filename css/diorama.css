@@ -322,13 +322,13 @@
 }
 
 .diorama-strip-card.is-highlighted {
-  animation: card-highlight 1.4s ease-out forwards;
+  animation: card-highlight 1.8s ease-out forwards;
 }
 
 @keyframes card-highlight {
-  0%   { box-shadow: inset 0 0 0 3px var(--gold), 0 0 18px var(--gold-glow); }
-  55%  { box-shadow: inset 0 0 0 3px var(--gold), 0 0 18px var(--gold-glow); }
-  100% { box-shadow: inset 0 0 0 0px var(--gold), 0 0 0px transparent; }
+  0%   { background-color: rgba(196, 146, 42, 0.22); filter: drop-shadow(0 0 10px rgba(196,146,42,0.55)); }
+  45%  { background-color: rgba(196, 146, 42, 0.22); filter: drop-shadow(0 0 10px rgba(196,146,42,0.55)); }
+  100% { background-color: transparent;               filter: drop-shadow(0 0 0px rgba(196,146,42,0)); }
 }
 
 .diorama-strip-card-name {
@@ -394,7 +394,7 @@
   position: relative;
   width: 100%;
   height: 180px;
-  background: #1a1510;
+  background: #daedf6;
   overflow: hidden;
 }
 
@@ -403,7 +403,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  background: #1a1510;
+  background: #daedf6;
   pointer-events: auto;
 }
 
@@ -612,56 +612,6 @@
   border: 2px solid var(--ink);
 }
 
-/* ══════════════════════════════════════════════════
-   圖片放大檢視
-══════════════════════════════════════════════════ */
-
-.diorama-img-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(28, 21, 16, 0.92);
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.22s ease;
-  cursor: zoom-out;
-}
-
-.diorama-img-modal.is-open {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.diorama-img-modal-close {
-  position: fixed;
-  top: 1.5rem;
-  right: 1.5rem;
-  background: none;
-  border: none;
-  color: var(--paper);
-  font-size: 1.4rem;
-  cursor: pointer;
-  font-family: inherit;
-  padding: 0.3rem 0.5rem;
-  z-index: 201;
-  transition: color 0.15s ease;
-}
-
-.diorama-img-modal-close:hover {
-  color: var(--gold);
-}
-
-.diorama-img-modal-img {
-  max-width: 90vw;
-  max-height: 85vh;
-  object-fit: contain;
-  border: 2px solid var(--ink);
-  background: #1a1510;
-}
 
 .diorama-video-modal-error {
   text-align: center;
@@ -671,4 +621,211 @@
   line-height: 1.6;
   background: var(--paper);
   border: 2px solid var(--ink);
+}
+
+/* ════════════════════════════════════════════
+   漁場箱庭插畫場景（seascape 新版）
+   ════════════════════════════════════════════ */
+
+.seascape {
+  position: relative;
+  /* 全寬突破 section max-width（貼齊視窗兩端） */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  background-color: #daedf6;
+  /* 上下柔邊，同時遮掉 PNG 透明留白 */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 6%,
+    black 94%,
+    transparent 100%
+  );
+}
+
+/* 圖片略大於容器，裁掉白邊 */
+.seascape-layer {
+  display: block;
+  width: 106%;
+  position: relative;
+  left: -3%;
+  transition: filter 0.25s ease;
+}
+.seascape-layer:not(:first-child) {
+  position: absolute;
+  top: 0;
+  left: -3%;
+  width: 106%;
+  height: 100%;
+  pointer-events: none;
+  transition: filter 0.25s ease;
+}
+
+/* hover 時對應圖層發光 */
+.seascape-layer.is-lit {
+  filter: brightness(1.15) drop-shadow(0 0 14px rgba(196,146,42,0.7));
+}
+/* 洋流（除流巡外）對比不明顯，加強亮度 */
+#seascape-layer-currents-0.is-lit,
+#seascape-layer-currents-1.is-lit,
+#seascape-layer-currents-2.is-lit,
+#seascape-layer-currents-3.is-lit {
+  filter: brightness(1.45) drop-shadow(0 0 18px rgba(196,146,42,0.9));
+}
+/* 南流、流東、洘流圖層較淡，再加強 */
+#seascape-layer-currents-1.is-lit,
+#seascape-layer-currents-2.is-lit,
+#seascape-layer-currents-3.is-lit {
+  filter: brightness(1.8) drop-shadow(0 0 24px rgba(196,146,42,1)) drop-shadow(0 0 8px rgba(255,200,80,0.7));
+}
+
+/* ── 不可見熱區按鈕 ─────────────────────────────── */
+.seascape-hotspot {
+  position: absolute;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 20;
+}
+.seascape-hotspot:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ── hover 金色標籤 ─────────────────────────────── */
+.seascape-label {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: #1a0e00;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 3px 9px;
+  border-radius: 2px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  z-index: 30;
+}
+.seascape-label::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--gold);
+}
+/* 標籤朝下（元素在圖上方時用） */
+.seascape-label--below {
+  bottom: auto;
+  top: calc(100% + 6px);
+}
+.seascape-label--below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: var(--gold);
+}
+.seascape-hotspot:hover .seascape-label,
+.seascape-hotspot:focus .seascape-label {
+  opacity: 1;
+}
+
+/* ── 座標工具列 ─────────────────────────────────── */
+.seascape-coord-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 2rem;
+  background: rgba(26, 14, 0, 0.06);
+  font-size: 0.8rem;
+  color: var(--ink);
+  flex-wrap: wrap;
+}
+.seascape-coord-label {
+  color: var(--ink);
+  opacity: 0.7;
+  white-space: nowrap;
+}
+.seascape-coord-input {
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border: 1.5px solid var(--gold);
+  border-radius: 3px;
+  background: #fffef8;
+  color: #1a0e00;
+  width: 200px;
+  cursor: text;
+}
+.seascape-coord-copy {
+  padding: 3px 12px;
+  background: var(--gold);
+  color: #1a0e00;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.seascape-coord-copy:hover {
+  background: var(--gold-light);
+}
+.seascape-coord-copied {
+  color: var(--gold);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.seascape-coord-copied.is-visible {
+  opacity: 1;
+}
+
+/* ── 漁場金色圓點標記（待座標確認後插入） ─────── */
+.seascape-ground-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 25;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+.seascape-ground-dot {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 2px rgba(196, 146, 42, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.seascape-ground-marker:hover .seascape-ground-dot,
+.seascape-ground-marker:focus .seascape-ground-dot {
+  transform: scale(1.35);
+  box-shadow: 0 0 0 4px rgba(196, 146, 42, 0.3);
+}
+.seascape-ground-marker .seascape-label {
+  opacity: 0;
+}
+.seascape-ground-marker:hover .seascape-label,
+.seascape-ground-marker:focus .seascape-label {
+  opacity: 1;
 }

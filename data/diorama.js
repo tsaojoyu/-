@@ -85,7 +85,7 @@ const DIORAMA_DATA = {
         description: '即白皮旗魚，俗稱「丁挽」或「翹翅仔」，每年冬季洄游至花東海域，為過去花蓮港鏢刺漁業最主要的目標魚種。',
         quote: null,
         quoteSource: null,
-        images: ['images/diorama/striped-marlin.jpg']
+        images: ['images/diorama/旗魚-new.png']
       },
       {
         name: '大棘大眼鯛（紅目鰱）',
@@ -93,7 +93,7 @@ const DIORAMA_DATA = {
         description: '俗稱「紅目鰱」，曾經在花蓮海域數量龐大的魚種，並且分布極廣，但近年來已不常見，漁民也不再以牠為主要目標。',
         quote: null,
         quoteSource: null,
-        images: ['images/diorama/red-bigeye.jpg']
+        images: ['images/diorama/紅目鰱-new.png']
       },
       {
         name: '赤鯥（紅喉）',
@@ -101,7 +101,7 @@ const DIORAMA_DATA = {
         description: '俗稱「紅喉」，底棲形魚類，一般由深水的延繩釣，或是底刺網捕獲。',
         quote: null,
         quoteSource: null,
-        images: ['images/diorama/blackthroat-seaperch.jpg']
+        images: ['images/diorama/紅鯸-new.png']
       },
       {
         name: '康氏馬加鰆（馬加）',
@@ -109,7 +109,7 @@ const DIORAMA_DATA = {
         description: '俗稱「馬加」，漁民一般認為棲息在深度 50 米以內的近岸水域，在花蓮海域經常被流刺網或曳繩釣捕獲。',
         quote: null,
         quoteSource: null,
-        images: ['images/diorama/spanish-mackerel.jpg']
+        images: ['images/diorama/馬加-new.png']
       },
       {
         name: '鬼頭刀',
@@ -117,7 +117,7 @@ const DIORAMA_DATA = {
         description: '大洋性洄游魚類，每年春季開始會行經花蓮海域，常見牠游動於海水表層，是延繩釣漁業主要的目標魚種之一。',
         quote: null,
         quoteSource: null,
-        images: ['images/diorama/mahi-mahi.jpg']
+        images: ['images/diorama/鬼頭刀-new.png']
       }
     ]
   },
