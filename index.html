@@ -247,7 +247,17 @@
 
     </div><!-- /.seascape -->
 
-<!-- 四大橫條（由 JS 從 DIORAMA_DATA 渲染） -->
+    <!-- ── 座標工具 -->
+    <div class="seascape-coord-wrap" id="seascapeCoordWrap" style="display:none">
+      <span class="seascape-coord-label">座標工具：點擊插畫任意位置</span>
+      <input class="seascape-coord-input" id="seascapeCoordDisplay"
+             type="text" readonly placeholder="left: 0.0%  top: 0.0%"
+             aria-label="點擊位置座標（可複製）">
+      <button class="seascape-coord-copy" id="seascapeCoordCopy" type="button">複製</button>
+      <span class="seascape-coord-copied" id="seascapeCoordCopied">已複製</span>
+    </div>
+
+    <!-- 四大橫條（由 JS 從 DIORAMA_DATA 渲染） -->
     <div id="dioramaStrips"></div>
 
   </section>
