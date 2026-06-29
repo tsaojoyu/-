@@ -736,6 +736,57 @@
   opacity: 1;
 }
 
+/* ── 座標工具列 ─────────────────────────────────── */
+.seascape-coord-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 2rem;
+  background: rgba(26, 14, 0, 0.06);
+  font-size: 0.8rem;
+  color: var(--ink);
+  flex-wrap: wrap;
+}
+.seascape-coord-label {
+  color: var(--ink);
+  opacity: 0.7;
+  white-space: nowrap;
+}
+.seascape-coord-input {
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border: 1.5px solid var(--gold);
+  border-radius: 3px;
+  background: #fffef8;
+  color: #1a0e00;
+  width: 200px;
+  cursor: text;
+}
+.seascape-coord-copy {
+  padding: 3px 12px;
+  background: var(--gold);
+  color: #1a0e00;
+  border: none;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.seascape-coord-copy:hover {
+  background: var(--gold-light);
+}
+.seascape-coord-copied {
+  color: var(--gold);
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.seascape-coord-copied.is-visible {
+  opacity: 1;
+}
 
 /* ── 漁場金色圓點標記（待座標確認後插入） ─────── */
 .seascape-ground-marker {
