@@ -570,46 +570,5 @@
     });
   });
 
-  /* ── 座標工具（漁場打點，確認後移除）────────────── */
-  var seascapeEl  = document.querySelector('.seascape');
-  var coordWrap   = document.getElementById('seascapeCoordWrap');
-  var coordInput  = document.getElementById('seascapeCoordDisplay');
-  var coordCopy   = document.getElementById('seascapeCoordCopy');
-  var coordCopied = document.getElementById('seascapeCoordCopied');
-  var copyTimer   = null;
-
-  if (seascapeEl && coordInput) {
-    /* 顯示工具列 */
-    if (coordWrap) coordWrap.style.display = 'flex';
-
-    seascapeEl.addEventListener('click', function (e) {
-      /* 點到熱區按鈕時也更新座標（兩者都能用） */
-      var rect = seascapeEl.getBoundingClientRect();
-      var x = ((e.clientX - rect.left) / rect.width  * 100).toFixed(1);
-      var y = ((e.clientY - rect.top)  / rect.height * 100).toFixed(1);
-      coordInput.value = 'left: ' + x + '%  top: ' + y + '%';
-    });
-  }
-
-  if (coordCopy && coordInput) {
-    coordCopy.addEventListener('click', function () {
-      coordInput.select();
-      var text = coordInput.value;
-      if (navigator.clipboard && text) {
-        navigator.clipboard.writeText(text).catch(function () {
-          document.execCommand('copy');
-        });
-      } else {
-        document.execCommand('copy');
-      }
-      if (coordCopied) {
-        coordCopied.classList.add('is-visible');
-        clearTimeout(copyTimer);
-        copyTimer = setTimeout(function () {
-          coordCopied.classList.remove('is-visible');
-        }, 1500);
-      }
-    });
-  }
 
 })();
