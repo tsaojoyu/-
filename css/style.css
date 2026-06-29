@@ -282,3 +282,36 @@ body {
 .site-footer a:hover {
   color: var(--gold);
 }
+
+/* ══════════════════════════════════════════════════
+   背景音樂開關按鈕
+══════════════════════════════════════════════════ */
+
+.audio-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 500;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(27, 73, 101, 0.82);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.15s ease;
+  backdrop-filter: blur(4px);
+}
+
+.audio-toggle:hover {
+  background: var(--gold);
+  transform: scale(1.1);
+}
+
+.audio-toggle.is-muted {
+  background: rgba(27, 73, 101, 0.45);
+}
