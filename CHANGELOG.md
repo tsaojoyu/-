@@ -570,4 +570,4 @@ css/harbor.css    新增 white-space: pre-wrap
 - [ ] 今昔比對現代影像：5 張右側照片（`images/compare-new-1~5.jpg`）
 - [ ] 視覺風格改版：白底 + 無襯線 + 留白
 - [ ] 響應式設計
-- [ ] Netlify 正式部署
+- [x] Netlify 部署：v3.1 上線（2026-06-29）
