@@ -540,10 +540,34 @@ css/harbor.css    新增 white-space: pre-wrap
 - `vessels.js` 進港漁船補入第二張照片（`進港漁船-02.jpg`）
 
 ### 待辦（下一階段）
+- [x] seascape 熱區微調：確認所有標點位置後移除座標工具
+- [x] 鏢尾漁場標點：補入 seascape（`data-index="1"`）
 - [ ] 延伸閱讀 URL：Google Maps 漁場地圖連結（`data/diorama.js` DIORAMA_LINKS[0].url）
 - [ ] 今昔比對現代影像：5 張右側照片（`images/compare-new-1~5.jpg`）
-- [ ] seascape 熱區微調：確認所有標點位置後移除座標工具
-- [ ] 鏢尾漁場標點：補入 seascape（`data-index="1"`）
+- [ ] 視覺風格改版：白底 + 無襯線 + 留白
+- [ ] 響應式設計
+- [ ] Netlify 正式部署
+
+---
+
+## v3.1 — 2026-06-29
+
+### 視覺收尾：框線移除 + 漁場標點完整
+
+#### 移除漁場箱庭所有框線
+- `.diorama-strip` 外框（3px）移除，統一與漁港區段無框風格
+- `.diorama-strip-card` 卡片間右側分隔線（2px）移除
+- `.diorama-strip-card-media` 圖片區塊外框（2px）移除
+- `.diorama-deep-links` 延伸閱讀外框（3px）及項目分隔線（2px）移除
+- `.diorama-strip-img-counter` 圖片計數列上邊框（1px）移除
+
+#### 漁場標點補齊（共 5 個）
+- 補入「鏢尾」（`data-index="1"`），座標 `left:58.5%; top:36.3%`
+- 座標工具完整移除（HTML / JS / CSS）
+
+### 待辦（下一階段）
+- [ ] 延伸閱讀 URL：Google Maps 漁場地圖連結（`data/diorama.js` DIORAMA_LINKS[0].url）
+- [ ] 今昔比對現代影像：5 張右側照片（`images/compare-new-1~5.jpg`）
 - [ ] 視覺風格改版：白底 + 無襯線 + 留白
 - [ ] 響應式設計
 - [ ] Netlify 正式部署
